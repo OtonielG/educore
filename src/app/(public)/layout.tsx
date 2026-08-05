@@ -1,5 +1,7 @@
 import "./landing.css";
 
+import Header from "./components/layout/header";
+
 export default function PublicLayout({
   children,
 }: {
@@ -7,7 +9,7 @@ export default function PublicLayout({
 }) {
   return (
     <div className="landing min-h-screen bg-landing-background text-landing-text">
-      {/* <Header /> */}
+      <Header />
 
       <main>{children}</main>
 
