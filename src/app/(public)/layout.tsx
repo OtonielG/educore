@@ -8,7 +8,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="landing min-h-screen bg-landing-background text-landing-text">
+    <div className="landing min-h-screen bg-landing-background text-landing-text overflow-hidden">
       <Header />
 
       <main>{children}</main>

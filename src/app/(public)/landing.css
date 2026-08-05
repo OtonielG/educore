@@ -19,3 +19,17 @@
   --landing-lime: #78cd52;
 }
 
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-floating {
+  animation: floating 2s ease-in-out infinite;
+}

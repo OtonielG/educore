@@ -58,7 +58,7 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 h-20 flex justify-center items-center backdrop-blur">
       <div className="relative w-full max-w-360 h-full flex items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
         <Image
-          src="/educore-logo.png"
+          src="/educore-logo.avif"
           alt="EduCore"
           width={780}
           height={160}
