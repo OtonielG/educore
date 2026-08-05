@@ -1,0 +1,21 @@
+.landing {
+  --landing-background: #f0ede6;
+  --landing-surface: #fffaf1;
+  --landing-surface-muted: #e0cdb0;
+
+  --landing-text: #33231f;
+  --landing-text-muted: #685f5c;
+  --landing-border: #d7b19c;
+
+  --landing-orange: #f97137;
+  --landing-orange-light: #f29157;
+  --landing-yellow: #f9d026;
+  --landing-green: #1d824b;
+  --landing-green-dark: #1d6d50;
+  --landing-blue: #4b97cc;
+
+  --landing-brown: #613e32;
+  --landing-coral: #ee724a;
+  --landing-lime: #78cd52;
+}
+

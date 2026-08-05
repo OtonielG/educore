@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-landing-background: var(--landing-background);
+  --color-landing-surface: var(--landing-surface);
+  --color-landing-surface-muted: var(--landing-surface-muted);
+
+  --color-landing-text: var(--landing-text);
+  --color-landing-text-muted: var(--landing-text-muted);
+  --color-landing-border: var(--landing-border);
+
+  --color-landing-orange: var(--landing-orange);
+  --color-landing-orange-light: var(--landing-orange-light);
+  --color-landing-yellow: var(--landing-yellow);
+  --color-landing-green: var(--landing-green);
+  --color-landing-green-dark: var(--landing-green-dark);
+  --color-landing-blue: var(--landing-blue);
+
+  --color-landing-brown: var(--landing-brown);
+  --color-landing-coral: var(--landing-coral);
+  --color-landing-lime: var(--landing-lime);
+}
