@@ -1,3 +1,5 @@
+import { Menu, X } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,12 +12,12 @@ export default function Header() {
           alt="EduCore"
           width={780}
           height={160}
-          className="md:h-7 lg:h-8 xl:h-10 w-auto hover:scale-90 transition-transform duration-300 cursor-pointer"
+          className="h-6 sm:h-7 md:h-8 xl:h-10 w-auto hover:scale-90 transition-transform duration-300 cursor-pointer"
           priority
         />
 
         <nav className="hidden grow lg:flex items-center justify-center">
-          <ul className="flex items-center justify-center lg:gap-9 xl:gap-12">
+          <ul className="flex items-center justify-center lg:gap-8 xl:gap-12">
             <li>
               <Link
                 href="/"
@@ -54,12 +56,15 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Link
-          href="/contact"
-          className="font-semibold md:px-6 md:py-2 xl:px-7 xl:py-3 bg-landing-surface border-2 border-landing-text outline-none rounded-tl-none rounded-tr-3xl rounded-br-none rounded-bl-3xl hover:bg-landing-text hover:text-landing-surface transition-all duration-300"
-        >
-          Contacto
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="font-semibold px-4 py-1 sm:px-5 md:px-6 md:py-2 xl:px-7 xl:py-3 bg-landing-surface border-2 border-landing-text outline-none rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl md:rounded-tl-none md:rounded-tr-2xl md:rounded-br-none md:rounded-bl-2xl xl:rounded-tl-none xl:rounded-tr-3xl xl:rounded-br-none xl:rounded-bl-3xl hover:bg-landing-text hover:text-landing-surface transition-all duration-300"
+          >
+            Contacto
+          </Link>
+          <Menu className="h-6 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:hidden" />
+        </div>
         <div className="absolute inset-x-4 bottom-0 h-px bg-landing-text/30 sm:inset-x-6 lg:inset-x-8" />
       </div>
     </header>
