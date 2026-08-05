@@ -1,9 +1,59 @@
+"use client";
+
 import { Menu, X } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import MobileNav from "../mobile-nav";
 
 export default function Header() {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const mobileNavRef = useRef<HTMLElement | null>(null);
+  const mobileNavButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!isMobileNavOpen) return;
+
+    const handleOutsideClick = (event: PointerEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Node)) return;
+
+      if (
+        mobileNavRef.current?.contains(target) ||
+        mobileNavButtonRef.current?.contains(target)
+      ) {
+        return;
+      }
+
+      setIsMobileNavOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsideClick);
+    };
+  }, [isMobileNavOpen]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+
+    const handleDesktopChange = () => {
+      if (desktopQuery.matches) {
+        setIsMobileNavOpen(false);
+      }
+    };
+
+    handleDesktopChange();
+    desktopQuery.addEventListener("change", handleDesktopChange);
+
+    return () => {
+      desktopQuery.removeEventListener("change", handleDesktopChange);
+    };
+  }, []);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-20 flex justify-center items-center backdrop-blur">
       <div className="relative w-full max-w-360 h-full flex items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
@@ -63,9 +113,43 @@ export default function Header() {
           >
             Contacto
           </Link>
-          <Menu className="h-6 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:hidden" />
+          <button
+            ref={mobileNavButtonRef}
+            type="button"
+            aria-label={
+              isMobileNavOpen
+                ? "Cerrar menu de navegacion"
+                : "Abrir menu de navegacion"
+            }
+            aria-controls="mobile-navigation"
+            aria-expanded={isMobileNavOpen}
+            onClick={() => setIsMobileNavOpen((isOpen) => !isOpen)}
+            className="relative grid h-8 w-8 place-items-center lg:hidden"
+          >
+            <Menu
+              aria-hidden="true"
+              className={`absolute h-6 w-6 transition-all duration-300 sm:h-7 sm:w-7 md:h-8 md:w-8 ${
+                isMobileNavOpen
+                  ? "rotate-90 scale-75 opacity-0"
+                  : "rotate-0 scale-100 opacity-100"
+              }`}
+            />
+            <X
+              aria-hidden="true"
+              className={`absolute h-6 w-6 transition-all duration-300 sm:h-7 sm:w-7 md:h-8 md:w-8 ${
+                isMobileNavOpen
+                  ? "rotate-0 scale-100 opacity-100"
+                  : "-rotate-90 scale-75 opacity-0"
+              }`}
+            />
+          </button>
         </div>
         <div className="absolute inset-x-4 bottom-0 h-px bg-landing-text/30 sm:inset-x-6 lg:inset-x-8" />
+        <MobileNav
+          isOpen={isMobileNavOpen}
+          navRef={mobileNavRef}
+          onClose={() => setIsMobileNavOpen(false)}
+        />
       </div>
     </header>
   );
