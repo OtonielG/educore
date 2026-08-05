@@ -19,4 +19,6 @@
   --color-landing-brown: var(--landing-brown);
   --color-landing-coral: var(--landing-coral);
   --color-landing-lime: var(--landing-lime);
+
+  --font-bespoke: var(--font-bespoke-serif);
 }
