@@ -13,7 +13,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
       ref={navRef}
       id="mobile-navigation"
       aria-hidden={!isOpen}
-      className={`absolute z-40 right-4 top-[110%] w-auto bg-landing-border/60 p-5 lg:hidden rounded-2xl transition-all duration-300 ease-out ${
+      className={`absolute z-40 right-4 top-[110%] w-auto bg-landing-border/80 p-5 lg:hidden rounded-2xl transition-all duration-300 ease-out ${
         isOpen
           ? "translate-y-0 scale-100 opacity-100"
           : "-translate-y-3 scale-95 opacity-0 pointer-events-none"

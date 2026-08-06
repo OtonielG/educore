@@ -33,3 +33,47 @@
 .animate-floating {
   animation: floating 2s ease-in-out infinite;
 }
+
+@keyframes move-from-left {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(12px);
+  }
+}
+
+@keyframes move-from-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-12px);
+  }
+}
+
+.animate-from-left {
+  animation: move-from-left 3s ease-in-out infinite;
+}
+
+.animate-from-right {
+  animation: move-from-right 3s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-from-left,
+  .animate-from-right {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-from-left,
+  .animate-from-right {
+    animation: none;
+  }
+}

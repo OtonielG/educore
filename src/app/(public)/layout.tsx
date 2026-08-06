@@ -11,7 +11,9 @@ export default function PublicLayout({
     <div className="landing min-h-screen bg-landing-background text-landing-text overflow-hidden">
       <Header />
 
-      <main>{children}</main>
+      <main className="flex flex-col items-center justify-center">
+        {children}
+      </main>
 
       {/* <Footer /> */}
     </div>
