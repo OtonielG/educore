@@ -88,10 +88,10 @@ export default function Header() {
 
             <li>
               <Link
-                href="#niveles-academicos"
+                href="#nuestro-equipo"
                 className="relative font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-landing-orange-light after:transition-all after:duration-300 hover:after:w-full"
               >
-                Niveles académicos
+                Nuestro Equipo
               </Link>
             </li>
           </ul>

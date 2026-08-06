@@ -12,8 +12,8 @@ const footerLinks = [
     href: "#acerca-de",
   },
   {
-    label: "Niveles académicos",
-    href: "#niveles-academicos",
+    label: "Nuestro Equipo",
+    href: "#nuestro-equipo",
   },
   {
     label: "Sistema de gestión",
@@ -23,17 +23,17 @@ const footerLinks = [
 
 const footerStats = [
   {
-    value: "120+",
+    value: "10+",
     label: "Docentes activos",
     icon: GraduationCap,
   },
   {
-    value: "8,000+",
+    value: "800+",
     label: "Clases completadas",
     icon: BookOpenCheck,
   },
   {
-    value: "25+",
+    value: "15+",
     label: "Instituciones asociadas",
     icon: Building2,
   },

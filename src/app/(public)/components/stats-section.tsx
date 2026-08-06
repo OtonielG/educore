@@ -2,19 +2,19 @@ import { GraduationCap, BookCheck, Building2 } from "lucide-react";
 
 const stats = [
   {
-    value: "120+",
+    value: "10+",
     label: "Docentes activos en nuestra comunidad",
     icon: GraduationCap,
     color: "bg-landing-orange",
   },
   {
-    value: "8,000+",
+    value: "800+",
     label: "Clases completadas por estudiantes",
     icon: BookCheck,
     color: "bg-landing-yellow",
   },
   {
-    value: "25+",
+    value: "15+",
     label: "Instituciones educativas asociadas",
     icon: Building2,
     color: "bg-landing-green",

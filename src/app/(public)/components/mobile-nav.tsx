@@ -42,11 +42,11 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
 
         <li className="w-full">
           <Link
-            href="#niveles-academicos"
+            href="#nuestro-equipo"
             onClick={onClose}
             className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
           >
-            Niveles académicos
+            Nuestro Equipo
           </Link>
         </li>
       </ul>
