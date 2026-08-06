@@ -23,7 +23,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="flex flex-wrap justify-center items-center gap-8 lg:gap-10 max-w-7xl px-4 sm:px-16 md:px-7 mt-10 lg:mt-0">
+    <section className="flex flex-wrap justify-center items-center gap-8 lg:gap-10 max-w-7xl px-4 sm:px-16 md:px-7">
       {stats.map((stat, index) => (
         <div
           key={stat.label}

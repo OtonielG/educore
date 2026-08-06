@@ -62,7 +62,7 @@ export default function Header() {
           alt="EduCore"
           width={780}
           height={160}
-          className="h-6 sm:h-7 md:h-8 xl:h-10 w-auto hover:scale-90 transition-transform duration-300 cursor-pointer"
+          className="h-6 sm:h-7 md:h-8 xl:h-10 w-auto hover:scale-90 transition-transform duration-300"
           priority
         />
 
