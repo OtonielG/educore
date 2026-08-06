@@ -6,13 +6,13 @@ export default function About() {
   return (
     <section
       id="acerca-de"
-      className="relative w-full flex flex-col lg:flex-row gap-5 lg:gap-0 overflow-hidden bg-[url('/images/about/shape-bg.avif')] bg-[length:100%_auto] bg-bottom bg-no-repeat"
+      className="scroll-mt-24 relative w-full flex flex-col lg:flex-row gap-5 lg:gap-0 overflow-hidden bg-[url('/images/about/shape-bg.avif')] bg-[length:100%_auto] bg-bottom bg-no-repeat"
     >
-      <div className="w-full lg:w-1/2 flex flex-col justify-center gap-7 z-10 lg:px-25 xl:px-30 2xl:px-40">
-        <h2 className="relative font-bespoke font-semibold lg:text-4xl xl:text-5xl 2xl:text-6xl after:absolute lg:after:-bottom-3 xl:after:-bottom-5 after:left-0 after:h-1 after:w-2/3 after:rounded-full after:bg-landing-orange xl:mb-6">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start gap-7 z-10 px-4 sm:px-8 lg:px-25 xl:px-30 2xl:px-40">
+        <h2 className="relative font-bespoke font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl after:absolute after:-bottom-2 md:after:-bottom-4 lg:after:-bottom-3 xl:after:-bottom-5 after:left-0 after:h-1 after:w-full lg:after:w-2/3 after:rounded-full after:bg-landing-orange md:mb-4 lg:mb-0 xl:mb-6">
           Quiénes somos
         </h2>
-        <p className="italic text-base xl:text-lg max-w-md">
+        <p className="italic text-center lg:text-start text-base xl:text-lg max-w-md">
           En Educore creemos que la educación debe ser accesible, organizada y
           cercana para todos. Nuestra plataforma conecta estudiantes, docentes e
           instituciones en un solo espacio, facilitando el aprendizaje y la

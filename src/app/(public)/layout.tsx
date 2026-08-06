@@ -12,7 +12,7 @@ export default function PublicLayout({
     <div className="landing min-h-screen bg-landing-background text-landing-text overflow-hidden">
       <Header />
 
-      <main className="flex flex-col items-center justify-center gap-10">
+      <main className="flex flex-col items-center justify-center gap-12">
         {children}
       </main>
 
