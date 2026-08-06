@@ -13,7 +13,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
       ref={navRef}
       id="mobile-navigation"
       aria-hidden={!isOpen}
-      className={`absolute z-40 right-4 top-[110%] w-auto bg-landing-border/80 p-5 lg:hidden rounded-2xl transition-all duration-300 ease-out ${
+      className={`absolute z-40 right-4 top-[110%] w-auto bg-landing-border/95 p-5 lg:hidden rounded-2xl transition-all duration-300 ease-out ${
         isOpen
           ? "translate-y-0 scale-100 opacity-100"
           : "-translate-y-3 scale-95 opacity-0 pointer-events-none"
@@ -22,7 +22,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
       <ul className="flex flex-col gap-1">
         <li className="w-full">
           <Link
-            href="/"
+            href="#inicio"
             onClick={onClose}
             className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
           >
@@ -32,7 +32,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
 
         <li className="w-full">
           <Link
-            href="/about"
+            href="#acerca-de"
             onClick={onClose}
             className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
           >
@@ -42,7 +42,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
 
         <li className="w-full">
           <Link
-            href="/academic-levels"
+            href="#niveles-academicos"
             onClick={onClose}
             className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
           >
@@ -52,7 +52,7 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
 
         <li className="w-full">
           <Link
-            href="/management-system"
+            href="#sistema-de-gestion"
             onClick={onClose}
             className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
           >

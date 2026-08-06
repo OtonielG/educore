@@ -70,7 +70,7 @@ export default function Header() {
           <ul className="flex items-center justify-center lg:gap-8 xl:gap-12">
             <li>
               <Link
-                href="/"
+                href="#inicio"
                 className="relative font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-landing-orange-light after:transition-all after:duration-300 hover:after:w-full"
               >
                 Inicio
@@ -79,7 +79,7 @@ export default function Header() {
 
             <li>
               <Link
-                href="/about"
+                href="#acerca-de"
                 className="relative font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-landing-orange-light after:transition-all after:duration-300 hover:after:w-full"
               >
                 Quiénes somos
@@ -88,7 +88,7 @@ export default function Header() {
 
             <li>
               <Link
-                href="/academic-levels"
+                href="#niveles-academicos"
                 className="relative font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-landing-orange-light after:transition-all after:duration-300 hover:after:w-full"
               >
                 Niveles académicos
@@ -97,7 +97,7 @@ export default function Header() {
 
             <li>
               <Link
-                href="/management-system"
+                href="#sistema-de-gestion"
                 className="relative font-semibold after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-landing-orange-light after:transition-all after:duration-300 hover:after:w-full"
               >
                 Sistema de gestión
@@ -108,7 +108,7 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <Link
-            href="/contact"
+            href="#contacto"
             className="font-semibold px-4 py-1 sm:px-5 md:px-6 md:py-2 xl:px-7 xl:py-3 bg-landing-surface border-2 border-landing-text outline-none rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl md:rounded-tl-none md:rounded-tr-2xl md:rounded-br-none md:rounded-bl-2xl xl:rounded-tl-none xl:rounded-tr-3xl xl:rounded-br-none xl:rounded-bl-3xl hover:bg-landing-text hover:text-landing-surface transition-all duration-300"
           >
             Contacto

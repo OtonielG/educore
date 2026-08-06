@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="pt-30 lg:pt-30 relative w-full lg:h-dvh">
+    <section id="inicio" className="pt-30 lg:pt-30 relative w-full lg:h-dvh">
       <div className="relative h-full flex flex-col items-center justify-center px-4 gap-7 sm:gap-8 md:gap-8 lg:gap-7">
         <h1 className="font-semibold font-bespoke text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-center leading-tight">
           Educación que{" "}
