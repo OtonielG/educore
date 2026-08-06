@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpen, Users, MoveDown } from "lucide-react";
+import { GraduationCap, BookOpen, Users, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,11 +40,11 @@ export default function Hero() {
           priority
         />
         <Link
-          href="/contact"
+          href="/dashboard"
           className="inline-flex text-sm md:text-base items-center gap-2 rounded-tl-xl rounded-br-xl lg:rounded-tl-2xl lg:rounded-br-2xl bg-landing-orange px-6 py-2 lg:py-3 font-semibold text-landing-surface -mt-5 md:mt-0 shadow-lg hover:shadow-2xl hover:bg-landing-orange-light transition-all duration-300"
         >
-          Háblanos
-          <MoveDown className="h-4 w-4" />
+          Abrir Sistema
+          <ArrowUpRight className="h-4 w-4" />
         </Link>
         <p className="font-semibold text-sm sm:text-base max-w-sm text-center">
           Educamos con propósito para formar estudiantes preparados para

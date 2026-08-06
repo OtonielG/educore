@@ -17,7 +17,7 @@ const footerLinks = [
   },
   {
     label: "Sistema de gestión",
-    href: "#sistema-de-gestion",
+    href: "/dashboard",
   },
 ];
 

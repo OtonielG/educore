@@ -49,16 +49,6 @@ export default function MobileNav({ isOpen, navRef, onClose }: MobileNavProps) {
             Niveles académicos
           </Link>
         </li>
-
-        <li className="w-full">
-          <Link
-            href="#sistema-de-gestion"
-            onClick={onClose}
-            className="block w-full px-4 py-1 text-center font-semibold transition-colors duration-300 hover:bg-landing-background rounded-2xl"
-          >
-            Sistema de gestión
-          </Link>
-        </li>
       </ul>
     </nav>
   );
