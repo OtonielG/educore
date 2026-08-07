@@ -15,22 +15,22 @@ export const menuItems = [
   },
   {
     label: "Estudiantes",
-    href: "/dashboard/students",
+    href: "/dashboard/estudiantes",
     icon: GraduationCap,
   },
   {
     label: "Maestros",
-    href: "/dashboard/teachers",
+    href: "/dashboard/maestros",
     icon: Users,
   },
   {
     label: "Clases",
-    href: "/dashboard/classes",
+    href: "/dashboard/clases",
     icon: BookOpen,
   },
   {
     label: "Configuración",
-    href: "/dashboard/settings",
+    href: "/dashboard/configuracion",
     icon: Settings,
   },
 ];
