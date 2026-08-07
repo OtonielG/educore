@@ -25,7 +25,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <Menu />
       </aside>
 
-      <main className="bg-dashboard-background min-w-0 grow overflow-x-hidden overflow-y-auto">
+      <main className="bg-dashboard-background min-w-0 min-h-screen grow overflow-x-hidden overflow-y-auto flex flex-col">
         <Navbar />
         {children}
       </main>
