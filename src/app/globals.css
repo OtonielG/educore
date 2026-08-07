@@ -34,5 +34,12 @@ html {
   --color-dashboard-text-muted: var(--dashboard-text-muted);
   --color-dashboard-border: var(--dashboard-border);
 
+  --color-dashboard-green: var(--dashboard-green);
+  --color-dashboard-blue: var(--dashboard-blue);
+  --color-dashboard-yellow: var(--dashboard-yellow);
+  --color-dashboard-orange: var(--dashboard-orange);
+  --color-dashboard-red: var(--dashboard-red);
+  --color-dashboard-purple: var(--dashboard-purple);
+
   --font-bespoke: var(--font-bespoke-serif);
 }

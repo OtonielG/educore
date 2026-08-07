@@ -40,7 +40,7 @@ export default function Menu() {
       <span className="hidden sm:block md:text-lg text-center lg:text-start text-gray-400 font-normal">
         MENU
       </span>
-      <ul className="flex flex-col gap-5">
+      <ul className="flex flex-col gap-6">
         {menuItems.map((item) => {
           const Icon = item.icon;
 

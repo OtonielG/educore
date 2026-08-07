@@ -12,4 +12,11 @@
   --dashboard-text-muted: #8a8d98;
 
   --dashboard-border: #ddd8ce;
+
+  --dashboard-green: #6f846f;
+  --dashboard-blue: #637a91;
+  --dashboard-yellow: #c29b52;
+  --dashboard-orange: #b97854;
+  --dashboard-red: #a85f5f;
+  --dashboard-purple: #7c6f91;
 }
