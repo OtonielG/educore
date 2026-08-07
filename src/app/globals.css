@@ -24,5 +24,15 @@ html {
   --color-landing-coral: var(--landing-coral);
   --color-landing-lime: var(--landing-lime);
 
+  --color-dashboard-background: var(--dashboard-background);
+  --color-dashboard-surface: var(--dashboard-surface);
+  --color-dashboard-primary: var(--dashboard-primary);
+  --color-dashboard-primary-hover: var(--dashboard-primary-hover);
+  --color-dashboard-accent: var(--dashboard-accent);
+  --color-dashboard-success: var(--dashboard-success);
+  --color-dashboard-text: var(--dashboard-text);
+  --color-dashboard-text-muted: var(--dashboard-text-muted);
+  --color-dashboard-border: var(--dashboard-border);
+
   --font-bespoke: var(--font-bespoke-serif);
 }

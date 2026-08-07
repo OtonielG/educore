@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import Menu from "./components/layout/menu";
 import Navbar from "./components/layout/navbar";
+import "./dashboard.css";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="dashboard flex h-screen overflow-hidden">
       <aside className="w-1/6 max-w-[240px]">
         <Link href="/dashboard">
           <Image
@@ -24,7 +25,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <Menu />
       </aside>
 
-      <main className="bg-[#f0ede6] min-w-0 grow overflow-x-hidden overflow-y-auto">
+      <main className="bg-dashboard-background min-w-0 grow overflow-x-hidden overflow-y-auto">
         <Navbar />
         {children}
       </main>

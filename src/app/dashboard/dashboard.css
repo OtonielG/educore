@@ -1,0 +1,15 @@
+.dashboard {
+  --dashboard-background: #f0ede6;
+  --dashboard-surface: #ffffff;
+
+  --dashboard-primary: #55637a;
+  --dashboard-primary-hover: #414d61;
+
+  --dashboard-accent: #a66f55;
+  --dashboard-success: #71836b;
+
+  --dashboard-text: #34363b;
+  --dashboard-text-muted: #8a8d98;
+
+  --dashboard-border: #ddd8ce;
+}
