@@ -1,3 +1,3 @@
 export default function Dashboard() {
-  return <section>Coming soon... kkkkkkkkkkkkkkkkkkk</section>;
+  return <section className="w-full h-[1000px]"></section>;
 }
