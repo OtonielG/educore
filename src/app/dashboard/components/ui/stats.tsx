@@ -34,7 +34,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="w-full flex flex-wrap justify-between items-center gap-5 pb-5">
+    <section className="w-full flex flex-wrap justify-between items-center gap-5">
       {stats.map((stat) => {
         const Icon = stat.icon;
 

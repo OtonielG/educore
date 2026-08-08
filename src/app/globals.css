@@ -4,6 +4,16 @@ html {
   scroll-behavior: smooth;
 }
 
+.react-calendar {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+.react-calendar abbr {
+  text-decoration: none;
+}
+
 @theme inline {
   --color-landing-background: var(--landing-background);
   --color-landing-surface: var(--landing-surface);

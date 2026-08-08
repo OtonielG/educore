@@ -11,7 +11,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="dashboard flex h-svh overflow-hidden">
+    <div className="dashboard flex min-h-svh overflow-hidden">
       <aside className="w-1/6 max-w-[240px]">
         <Link href="/dashboard">
           <Image
