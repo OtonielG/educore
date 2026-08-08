@@ -64,28 +64,28 @@ export default function TopStudents() {
               key={student.id}
               className={`grid w-full flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border px-3 py-3 sm:px-4 ${
                 student.gender === "male"
-                  ? "border-dashboard-blue/25 bg-dashboard-blue/5"
-                  : "border-dashboard-red/25 bg-dashboard-red/5"
+                  ? "border-dashboard-blue/25 bg-dashboard-blue/15"
+                  : "border-dashboard-red/25 bg-dashboard-red/15"
               }`}
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-dashboard-background text-sm font-bold">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-dashboard-primary/90 text-sm font-bold text-white">
                 {index + 1}
               </span>
 
               <div className="min-w-0">
                 <p className="truncate font-semibold">{student.fullName}</p>
 
-                <p className="truncate whitespace-nowrap text-xs text-dashboard-text-muted sm:text-sm">
+                <p className="truncate whitespace-nowrap font-medium text-xs text-dashboard-text-muted sm:text-sm">
                   {student.grade} · {student.age} años
                 </p>
 
-                <p className="truncate whitespace-nowrap text-[11px] text-dashboard-text-muted/80 sm:text-xs">
+                <p className="truncate whitespace-nowrap font-medium text-[11px] text-dashboard-text-muted/90 sm:text-xs">
                   Nacimiento: {student.birthDate}
                 </p>
               </div>
 
               <div className="flex shrink-0 items-center gap-2">
-                <span className="rounded-full bg-dashboard-background px-2.5 py-1 text-sm font-semibold">
+                <span className="rounded-full bg-dashboard-primary/90 px-2.5 py-1 text-sm font-semibold text-white">
                   {student.average}
                 </span>
 
