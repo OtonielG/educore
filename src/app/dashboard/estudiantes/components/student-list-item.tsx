@@ -1,15 +1,5 @@
 import { Eye, Mars, Trash2, Venus } from "lucide-react";
-
-export type Student = {
-  id: number;
-  fullName: string;
-  code: string;
-  birthDate: string;
-  phone: string;
-  grade: "Primero básico" | "Segundo básico" | "Tercero básico";
-  average: number;
-  gender: "Masculino" | "Femenino";
-};
+import type { Student } from "../types";
 
 type StudentListItemProps = {
   student: Student;

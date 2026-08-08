@@ -1,20 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import type { Student } from "../types";
 import StudentListHeader from "./student-list-header";
 import StudentListItem from "./student-list-item";
 import StudentsPagination from "./students-pagination";
-
-type Student = {
-  id: number;
-  fullName: string;
-  code: string;
-  birthDate: string;
-  phone: string;
-  grade: "Primero básico" | "Segundo básico" | "Tercero básico";
-  average: number;
-  gender: "Masculino" | "Femenino";
-};
 
 const students: Student[] = [
   {
