@@ -12,7 +12,7 @@ export default function EventCalendar() {
   const [value, onChange] = useState<Value>(new Date());
 
   return (
-    <div className="bg-dashboard-surface lg:h-full p-4 rounded-3xl border-2 border-dashboard-surface shadow-[inset_0_5px_12px_rgba(0,0,0,0.25),inset_0_-2px_5px_rgba(255,255,255,0.8)]">
+    <div className="bg-dashboard-surface lg:h-full p-4 rounded-3xl shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)]">
       <Calendar onChange={onChange} value={value} />
     </div>
   );

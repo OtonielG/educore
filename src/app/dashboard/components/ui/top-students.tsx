@@ -42,23 +42,23 @@ const topStudents = [...students].sort((a, b) => b.average - a.average);
 
 export default function TopStudents() {
   return (
-    <section className="flex h-full min-h-0 w-full flex-col gap-4 rounded-3xl border-2 border-sky-200 bg-sky-100 p-5 shadow-[inset_0_5px_12px_rgba(14,165,233,0.16),inset_0_-2px_5px_rgba(255,255,255,0.65)]">
+    <section className="flex h-full min-h-0 w-full flex-col gap-4 rounded-3xl bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)]">
       <h2 className="font-bespoke font-semibold">Estudiantes destacados</h2>
 
-      <ul className="flex min-h-0 flex-1 flex-col gap-2">
+      <ul className="flex flex-1 flex-col gap-2">
         {topStudents.map((student, index) => {
           const Icon = student.gender === "male" ? Mars : Venus;
 
           return (
             <li
               key={student.id}
-              className={`grid w-full flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border bg-white/85 px-3 py-3 shadow-sm sm:px-4 ${
+              className={`grid w-full flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border px-3 py-3 sm:px-4 ${
                 student.gender === "male"
-                  ? "border-dashboard-blue/30"
-                  : "border-dashboard-red/30"
+                  ? "border-dashboard-blue/25 bg-dashboard-blue/5"
+                  : "border-dashboard-red/25 bg-dashboard-red/5"
               }`}
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sm font-bold">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-dashboard-background text-sm font-bold">
                 {index + 1}
               </span>
 
@@ -71,7 +71,7 @@ export default function TopStudents() {
               </div>
 
               <div className="flex shrink-0 items-center gap-2">
-                <span className="rounded-full bg-sky-100 px-2.5 py-1 text-sm font-semibold">
+                <span className="rounded-full bg-dashboard-background px-2.5 py-1 text-sm font-semibold">
                   {student.average}
                 </span>
 

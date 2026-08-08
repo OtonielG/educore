@@ -23,7 +23,7 @@ const data = [
 
 export default function CountChart() {
   return (
-    <article className="bg-dashboard-surface w-full h-auto lg:h-full min-w-0 flex flex-col justify-center items-center gap-5 rounded-3xl border-2 border-dashboard-surface p-4 shadow-[inset_0_5px_12px_rgba(0,0,0,0.25),inset_0_-2px_5px_rgba(255,255,255,0.8)]">
+    <article className="bg-dashboard-surface w-full h-auto lg:h-full min-w-0 flex flex-col justify-center items-center gap-5 rounded-3xl p-4 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)]">
       <div className="shrink-0">
         <h2 className="font-semibold font-bespoke">Estudiantes</h2>
       </div>
