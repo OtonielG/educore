@@ -57,7 +57,7 @@ const notificationStyles = {
 
 export default function Notifications() {
   return (
-    <section className="flex h-auto w-full flex-col gap-4 rounded-3xl border-2 border-dashboard-surface bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)] lg:h-full">
+    <section className="flex h-auto w-full flex-col gap-4 rounded-3xl bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)] lg:h-full">
       <div className="flex items-center justify-between">
         <h2 className="font-bespoke font-semibold">Notificaciones</h2>
 
