@@ -8,7 +8,7 @@ import {
 const stats = [
   {
     label: "Total de estudiantes",
-    value: 20,
+    value: 35,
     icon: Users,
     color: "bg-dashboard-blue",
   },
@@ -20,13 +20,13 @@ const stats = [
   },
   {
     label: "Estudiantes solventes",
-    value: 15,
+    value: 25,
     icon: CircleCheckBig,
     color: "bg-dashboard-green",
   },
   {
     label: "Estudiantes morosos",
-    value: 5,
+    value: 10,
     icon: CircleAlert,
     color: "bg-dashboard-red",
   },

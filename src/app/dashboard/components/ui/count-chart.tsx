@@ -6,17 +6,17 @@ import Image from "next/image";
 const data = [
   {
     name: "Total",
-    count: 20,
+    count: 35,
     fill: "white",
   },
   {
     name: "Hombres",
-    count: 12,
+    count: 19,
     fill: "oklch(88.2% 0.059 254.128)",
   },
   {
     name: "Mujeres",
-    count: 8,
+    count: 16,
     fill: "oklch(88.5% 0.062 18.334)",
   },
 ];
@@ -55,20 +55,20 @@ export default function CountChart() {
         <div className="flex flex-col items-start gap-1">
           <div className="h-5 w-5 bg-blue-200 rounded-full" />
 
-          <span className="font-bold">12</span>
+          <span className="font-bold">19</span>
 
           <span className="text-xs sm:text-sm text-gray-400 leading-snug">
-            Hombres <span className="whitespace-nowrap">(60%)</span>
+            Hombres <span className="whitespace-nowrap">(54.29%)</span>
           </span>
         </div>
 
         <div className="flex flex-col items-start gap-1">
           <div className="h-5 w-5 bg-red-200 rounded-full" />
 
-          <span className="font-bold">8</span>
+          <span className="font-bold">16</span>
 
           <span className="text-xs sm:text-sm text-gray-400 leading-snug">
-            Mujeres <span className="whitespace-nowrap">(40%)</span>
+            Mujeres <span className="whitespace-nowrap">(45.71%)</span>
           </span>
         </div>
       </div>

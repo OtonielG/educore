@@ -5,36 +5,46 @@ const students = [
     id: 1,
     gender: "male",
     fullName: "Daniel Méndez García",
-    grade: "6.º primaria",
+    grade: "3.º básico",
     average: 97,
+    birthDate: "2011-03-14",
+    age: 15,
   },
   {
     id: 2,
     gender: "female",
     fullName: "Sofía Ramírez López",
-    grade: "5.º primaria",
+    grade: "2.º básico",
     average: 95,
+    birthDate: "2012-07-22",
+    age: 14,
   },
   {
     id: 3,
     gender: "male",
     fullName: "Mateo Castillo Pérez",
-    grade: "6.º primaria",
+    grade: "3.º básico",
     average: 93,
+    birthDate: "2011-11-08",
+    age: 14,
   },
   {
     id: 4,
     gender: "female",
     fullName: "Valeria Hernández Ruiz",
-    grade: "4.º primaria",
+    grade: "1.º básico",
     average: 91,
+    birthDate: "2013-02-17",
+    age: 13,
   },
   {
     id: 5,
     gender: "female",
     fullName: "Camila Morales Díaz",
-    grade: "5.º primaria",
+    grade: "2.º básico",
     average: 89,
+    birthDate: "2012-05-30",
+    age: 14,
   },
 ];
 
@@ -66,7 +76,11 @@ export default function TopStudents() {
                 <p className="truncate font-semibold">{student.fullName}</p>
 
                 <p className="truncate whitespace-nowrap text-xs text-dashboard-text-muted sm:text-sm">
-                  {student.grade}
+                  {student.grade} · {student.age} años
+                </p>
+
+                <p className="truncate whitespace-nowrap text-[11px] text-dashboard-text-muted/80 sm:text-xs">
+                  Nacimiento: {student.birthDate}
                 </p>
               </div>
 
