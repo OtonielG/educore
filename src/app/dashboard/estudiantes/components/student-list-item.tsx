@@ -1,5 +1,5 @@
 import { Eye, Mars, Trash2, Venus } from "lucide-react";
-import type { Student } from "../types";
+import type { Student } from "@/src/features/students";
 
 type StudentListItemProps = {
   student: Student;
