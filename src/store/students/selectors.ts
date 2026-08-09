@@ -25,3 +25,34 @@ export const selectStudentsGenderTotals = createSelector(
     mujeres: students.filter((student) => student.gender === "Femenino").length,
   }),
 );
+
+export const selectStudentsGradeTotals = createSelector(
+  [selectStudents],
+  (students) => {
+    const total = students.length;
+    const primeroBasico = students.filter(
+      (student) => student.grade === "Primero básico",
+    ).length;
+    const segundoBasico = students.filter(
+      (student) => student.grade === "Segundo básico",
+    ).length;
+    const terceroBasico = students.filter(
+      (student) => student.grade === "Tercero básico",
+    ).length;
+
+    return {
+      primeroBasico: {
+        students: primeroBasico,
+        percentage: total === 0 ? 0 : (primeroBasico / total) * 100,
+      },
+      segundoBasico: {
+        students: segundoBasico,
+        percentage: total === 0 ? 0 : (segundoBasico / total) * 100,
+      },
+      terceroBasico: {
+        students: terceroBasico,
+        percentage: total === 0 ? 0 : (terceroBasico / total) * 100,
+      },
+    };
+  },
+);
