@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+import { useCountUp } from "@/src/hooks/use-count-up";
 import { selectStudentsGradeTotals } from "@/src/store/students/selectors";
 
 const studentsByGradeConfig = [
@@ -26,12 +28,26 @@ const studentsByGradeConfig = [
 ] as const;
 
 export default function StudentsByGrade() {
+  const [areBarsVisible, setAreBarsVisible] = useState(false);
   const gradeTotals = useSelector(selectStudentsGradeTotals);
+  const animatedPrimeroBasico = useCountUp(gradeTotals.primeroBasico.students);
+  const animatedSegundoBasico = useCountUp(gradeTotals.segundoBasico.students);
+  const animatedTerceroBasico = useCountUp(gradeTotals.terceroBasico.students);
+  const animatedGradeTotals = {
+    primeroBasico: animatedPrimeroBasico,
+    segundoBasico: animatedSegundoBasico,
+    terceroBasico: animatedTerceroBasico,
+  };
   const studentsByGrade = studentsByGradeConfig.map((item) => ({
     ...item,
     students: gradeTotals[item.key].students,
+    animatedStudents: animatedGradeTotals[item.key],
     percentage: gradeTotals[item.key].percentage,
   }));
+
+  useEffect(() => {
+    setAreBarsVisible(true);
+  }, []);
 
   return (
     <section className="w-full rounded-3xl bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)]">
@@ -53,7 +69,7 @@ export default function StudentsByGrade() {
               </div>
 
               <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/75 text-sm font-bold">
-                {item.students}
+                {item.animatedStudents}
               </span>
             </div>
 
@@ -65,8 +81,8 @@ export default function StudentsByGrade() {
 
               <div className="h-2 w-full overflow-hidden rounded-full bg-white/70">
                 <div
-                  className={`h-full rounded-full ${item.color}`}
-                  style={{ width: `${item.percentage}%` }}
+                  className={`h-full rounded-full transition-[width] duration-700 ease-out ${item.color}`}
+                  style={{ width: areBarsVisible ? `${item.percentage}%` : "0%" }}
                 />
               </div>
             </div>
