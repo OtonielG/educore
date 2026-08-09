@@ -8,34 +8,39 @@ import {
 } from "lucide-react";
 import { useSelector } from "react-redux";
 
+import { useCountUp } from "@/src/hooks/use-count-up";
 import { selectStudentsPaymentStatusTotals } from "@/src/store/students/selectors";
 
 export default function Stats() {
   const { solventes, morosos } = useSelector(selectStudentsPaymentStatusTotals);
   const totalStudents = solventes + morosos;
+  const animatedTotalStudents = useCountUp(totalStudents);
+  const animatedTeachers = useCountUp(8);
+  const animatedSolventes = useCountUp(solventes);
+  const animatedMorosos = useCountUp(morosos);
 
   const stats = [
     {
       label: "Total de estudiantes",
-      value: totalStudents,
+      value: animatedTotalStudents,
       icon: Users,
       color: "bg-dashboard-blue",
     },
     {
       label: "Total de maestros",
-      value: 8,
+      value: animatedTeachers,
       icon: GraduationCap,
       color: "bg-dashboard-orange",
     },
     {
       label: "Estudiantes solventes",
-      value: solventes,
+      value: animatedSolventes,
       icon: CircleCheckBig,
       color: "bg-dashboard-green",
     },
     {
       label: "Estudiantes morosos",
-      value: morosos,
+      value: animatedMorosos,
       icon: CircleAlert,
       color: "bg-dashboard-red",
     },
