@@ -16,3 +16,12 @@ export const selectStudentsPaymentStatusTotals = createSelector(
       .length,
   }),
 );
+
+export const selectStudentsGenderTotals = createSelector(
+  [selectStudents],
+  (students) => ({
+    hombres: students.filter((student) => student.gender === "Masculino")
+      .length,
+    mujeres: students.filter((student) => student.gender === "Femenino").length,
+  }),
+);

@@ -2,26 +2,36 @@
 
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
-const data = [
-  {
-    name: "Total",
-    count: 35,
-    fill: "white",
-  },
-  {
-    name: "Hombres",
-    count: 19,
-    fill: "oklch(88.2% 0.059 254.128)",
-  },
-  {
-    name: "Mujeres",
-    count: 16,
-    fill: "oklch(88.5% 0.062 18.334)",
-  },
-];
+import { selectStudentsGenderTotals } from "@/src/store/students/selectors";
 
 export default function CountChart() {
+  const { hombres, mujeres } = useSelector(selectStudentsGenderTotals);
+  const totalStudents = hombres + mujeres;
+  const hombresPercentage =
+    totalStudents === 0 ? 0 : (hombres / totalStudents) * 100;
+  const mujeresPercentage =
+    totalStudents === 0 ? 0 : (mujeres / totalStudents) * 100;
+
+  const data = [
+    {
+      name: "Total",
+      count: totalStudents,
+      fill: "white",
+    },
+    {
+      name: "Hombres",
+      count: hombres,
+      fill: "oklch(88.2% 0.059 254.128)",
+    },
+    {
+      name: "Mujeres",
+      count: mujeres,
+      fill: "oklch(88.5% 0.062 18.334)",
+    },
+  ];
+
   return (
     <article className="bg-dashboard-surface w-full h-auto lg:h-full min-w-0 flex flex-col justify-center items-center gap-5 rounded-3xl p-4 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)]">
       <div className="shrink-0">
@@ -55,20 +65,26 @@ export default function CountChart() {
         <div className="flex flex-col items-start gap-1">
           <div className="h-5 w-5 bg-blue-200 rounded-full" />
 
-          <span className="font-bold">19</span>
+          <span className="font-bold">{hombres}</span>
 
           <span className="text-xs sm:text-sm text-gray-400 leading-snug">
-            Hombres <span className="whitespace-nowrap">(54.29%)</span>
+            Hombres{" "}
+            <span className="whitespace-nowrap">
+              ({hombresPercentage.toFixed(2)}%)
+            </span>
           </span>
         </div>
 
         <div className="flex flex-col items-start gap-1">
           <div className="h-5 w-5 bg-red-200 rounded-full" />
 
-          <span className="font-bold">16</span>
+          <span className="font-bold">{mujeres}</span>
 
           <span className="text-xs sm:text-sm text-gray-400 leading-snug">
-            Mujeres <span className="whitespace-nowrap">(45.71%)</span>
+            Mujeres{" "}
+            <span className="whitespace-nowrap">
+              ({mujeresPercentage.toFixed(2)}%)
+            </span>
           </span>
         </div>
       </div>
