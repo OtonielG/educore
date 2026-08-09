@@ -7,4 +7,5 @@ export type Student = {
   grade: "Primero básico" | "Segundo básico" | "Tercero básico";
   average: number;
   gender: "Masculino" | "Femenino";
+  paymentStatus: "Solvente" | "Moroso";
 };

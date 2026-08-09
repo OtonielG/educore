@@ -10,6 +10,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 82,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 85,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 76,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 88,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 5,
@@ -50,6 +54,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 69,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 6,
@@ -60,6 +65,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 89,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 7,
@@ -70,6 +76,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 73,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 8,
@@ -80,6 +87,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 86,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 9,
@@ -90,6 +98,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 78,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 10,
@@ -100,6 +109,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 84,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 11,
@@ -110,6 +120,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 71,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 12,
@@ -120,6 +131,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 91,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 13,
@@ -130,6 +142,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 84,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 14,
@@ -140,6 +153,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 81,
     gender: "Femenino",
+    paymentStatus: "Moroso",
   },
   {
     id: 15,
@@ -150,6 +164,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 67,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 16,
@@ -160,6 +175,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 87,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 17,
@@ -170,6 +186,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 74,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 18,
@@ -180,6 +197,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 87,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 19,
@@ -190,6 +208,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 80,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 20,
@@ -200,6 +219,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 88,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 21,
@@ -210,6 +230,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 72,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 22,
@@ -220,6 +241,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 85,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 23,
@@ -230,6 +252,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 77,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 24,
@@ -240,6 +263,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 95,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 25,
@@ -250,6 +274,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 68,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 26,
@@ -260,6 +285,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 86,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 27,
@@ -270,6 +296,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 93,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 28,
@@ -280,6 +307,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 88,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 29,
@@ -290,6 +318,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 75,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 30,
@@ -300,6 +329,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 97,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 31,
@@ -310,6 +340,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 81,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
   {
     id: 32,
@@ -320,6 +351,7 @@ export const students: Student[] = [
     grade: "Segundo básico",
     average: 83,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 33,
@@ -330,6 +362,7 @@ export const students: Student[] = [
     grade: "Tercero básico",
     average: 70,
     gender: "Masculino",
+    paymentStatus: "Moroso",
   },
   {
     id: 34,
@@ -340,6 +373,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 88,
     gender: "Femenino",
+    paymentStatus: "Solvente",
   },
   {
     id: 35,
@@ -350,6 +384,7 @@ export const students: Student[] = [
     grade: "Primero básico",
     average: 83,
     gender: "Masculino",
+    paymentStatus: "Solvente",
   },
 ];
 
