@@ -56,3 +56,13 @@ export const selectStudentsGradeTotals = createSelector(
     };
   },
 );
+
+export const selectTopStudentsByAverage = createSelector(
+  [selectStudents],
+  (students) =>
+    [...students]
+      .sort((firstStudent, secondStudent) => {
+        return secondStudent.average - firstStudent.average;
+      })
+      .slice(0, 5),
+);

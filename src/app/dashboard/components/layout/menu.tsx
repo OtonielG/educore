@@ -16,12 +16,12 @@ export const menuItems = [
   {
     label: "Estudiantes",
     href: "/dashboard/estudiantes",
-    icon: GraduationCap,
+    icon: Users,
   },
   {
     label: "Maestros",
     href: "/dashboard/maestros",
-    icon: Users,
+    icon: GraduationCap,
   },
   {
     label: "Clases",
