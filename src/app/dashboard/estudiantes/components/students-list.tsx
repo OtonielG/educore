@@ -12,9 +12,13 @@ import StudentsPagination from "./students-pagination";
 
 type StudentsListProps = {
   searchQuery: string;
+  onEdit: (student: Student) => void;
 };
 
-export default function StudentsList({ searchQuery }: StudentsListProps) {
+export default function StudentsList({
+  searchQuery,
+  onEdit,
+}: StudentsListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [studentToDelete, setStudentToDelete] = useState<Student | null>(null);
   const dispatch = useDispatch();
@@ -70,6 +74,7 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
                 key={student.id}
                 student={student}
                 isEven={index % 2 === 0}
+                onEdit={onEdit}
                 onDelete={setStudentToDelete}
               />
             ))}

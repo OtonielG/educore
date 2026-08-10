@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { NewStudent, Student } from "@/src/features/students";
 import { selectStudents } from "@/src/store/students/selectors";
-import { addStudent } from "@/src/store/students/slice";
-import AddStudentModal from "./components/add-student-modal";
+import { addStudent, updateStudent } from "@/src/store/students/slice";
+import StudentFormModal from "./components/student-form-modal";
 import StudentsList from "./components/students-list";
 import StudentsToolbar from "./components/students-toolbar";
 
@@ -21,6 +21,7 @@ function getNextStudentCode(students: Student[]) {
 export default function Estudiantes() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [studentToEdit, setStudentToEdit] = useState<Student | null>(null);
   const dispatch = useDispatch();
   const students = useSelector(selectStudents);
 
@@ -35,6 +36,26 @@ export default function Estudiantes() {
     setIsAddModalOpen(false);
   }
 
+  function handleUpdateStudent(studentData: NewStudent) {
+    if (!studentToEdit) {
+      return;
+    }
+
+    dispatch(
+      updateStudent({
+        ...studentData,
+        id: studentToEdit.id,
+        code: studentToEdit.code,
+      }),
+    );
+    setStudentToEdit(null);
+  }
+
+  function handleCloseModal() {
+    setIsAddModalOpen(false);
+    setStudentToEdit(null);
+  }
+
   return (
     <section className="w-full h-full p-5">
       <div className="bg-dashboard-surface p-5 rounded-3xl">
@@ -42,14 +63,19 @@ export default function Estudiantes() {
           onAdd={() => setIsAddModalOpen(true)}
           onSearch={setSearchQuery}
         />
-        <StudentsList key={searchQuery} searchQuery={searchQuery} />
+        <StudentsList
+          key={searchQuery}
+          searchQuery={searchQuery}
+          onEdit={setStudentToEdit}
+        />
       </div>
 
-      {isAddModalOpen ? (
-        <AddStudentModal
-          code={getNextStudentCode(students)}
-          onCancel={() => setIsAddModalOpen(false)}
-          onSubmit={handleAddStudent}
+      {isAddModalOpen || studentToEdit ? (
+        <StudentFormModal
+          code={studentToEdit?.code ?? getNextStudentCode(students)}
+          student={studentToEdit ?? undefined}
+          onCancel={handleCloseModal}
+          onSubmit={studentToEdit ? handleUpdateStudent : handleAddStudent}
         />
       ) : null}
     </section>

@@ -3,8 +3,9 @@
 import { FormEvent, useEffect, useId, useRef } from "react";
 import type { NewStudent, Student } from "@/src/features/students";
 
-type AddStudentModalProps = {
+type StudentFormModalProps = {
   code: string;
+  student?: Student;
   onCancel: () => void;
   onSubmit: (student: NewStudent) => void;
 };
@@ -12,11 +13,24 @@ type AddStudentModalProps = {
 const inputClassName =
   "mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 outline-none focus:border-dashboard-accent";
 
-export default function AddStudentModal({
+function getDateInputValue(birthDate?: string) {
+  if (!birthDate) {
+    return undefined;
+  }
+
+  const dateParts = birthDate.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+
+  return dateParts
+    ? `${dateParts[3]}-${dateParts[2]}-${dateParts[1]}`
+    : birthDate;
+}
+
+export default function StudentFormModal({
   code,
+  student,
   onCancel,
   onSubmit,
-}: AddStudentModalProps) {
+}: StudentFormModalProps) {
   const titleId = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
@@ -96,7 +110,7 @@ export default function AddStudentModal({
           onSubmit={handleSubmit}
         >
           <h2 id={titleId} className="font-bespoke text-xl font-semibold">
-            Agregar estudiante
+            {student ? "Editar estudiante" : "Agregar estudiante"}
           </h2>
 
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -107,6 +121,7 @@ export default function AddStudentModal({
                 className={inputClassName}
                 type="text"
                 name="fullName"
+                defaultValue={student?.fullName}
                 required
               />
             </label>
@@ -127,6 +142,7 @@ export default function AddStudentModal({
                 className={inputClassName}
                 type="date"
                 name="birthDate"
+                defaultValue={getDateInputValue(student?.birthDate)}
                 required
               />
             </label>
@@ -137,13 +153,27 @@ export default function AddStudentModal({
                 className={inputClassName}
                 type="tel"
                 name="phone"
+                inputMode="numeric"
+                pattern="[0-9]+"
+                defaultValue={student?.phone}
+                onInput={(event) => {
+                  event.currentTarget.value = event.currentTarget.value.replace(
+                    /\D/g,
+                    "",
+                  );
+                }}
                 required
               />
             </label>
 
             <label className="text-sm font-medium">
               Grado
-              <select className={inputClassName} name="grade" required>
+              <select
+                className={inputClassName}
+                name="grade"
+                defaultValue={student?.grade ?? "Primero básico"}
+                required
+              >
                 <option value="Primero básico">Primero basico</option>
                 <option value="Segundo básico">Segundo basico</option>
                 <option value="Tercero básico">Tercero basico</option>
@@ -158,13 +188,19 @@ export default function AddStudentModal({
                 name="average"
                 min="0"
                 max="100"
+                defaultValue={student?.average}
                 required
               />
             </label>
 
             <label className="text-sm font-medium">
               Genero
-              <select className={inputClassName} name="gender" required>
+              <select
+                className={inputClassName}
+                name="gender"
+                defaultValue={student?.gender ?? "Masculino"}
+                required
+              >
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
               </select>
@@ -172,7 +208,12 @@ export default function AddStudentModal({
 
             <label className="text-sm font-medium">
               Estado de pago
-              <select className={inputClassName} name="paymentStatus" required>
+              <select
+                className={inputClassName}
+                name="paymentStatus"
+                defaultValue={student?.paymentStatus ?? "Solvente"}
+                required
+              >
                 <option value="Solvente">Solvente</option>
                 <option value="Moroso">Moroso</option>
               </select>
@@ -192,7 +233,7 @@ export default function AddStudentModal({
               type="submit"
               className="cursor-pointer rounded-full bg-dashboard-accent px-4 py-2 text-sm font-medium text-dashboard-surface hover:bg-dashboard-accent/80"
             >
-              Agregar
+              {student ? "Guardar cambios" : "Agregar"}
             </button>
           </div>
         </form>

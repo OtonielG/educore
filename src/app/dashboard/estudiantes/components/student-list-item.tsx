@@ -1,15 +1,17 @@
-import { Eye, Mars, Trash2, Venus } from "lucide-react";
+import { Mars, Pencil, Trash2, Venus } from "lucide-react";
 import type { Student } from "@/src/features/students";
 
 type StudentListItemProps = {
   student: Student;
   isEven: boolean;
+  onEdit: (student: Student) => void;
   onDelete: (student: Student) => void;
 };
 
 export default function StudentListItem({
   student,
   isEven,
+  onEdit,
   onDelete,
 }: StudentListItemProps) {
   const GenderIcon = student.gender === "Masculino" ? Mars : Venus;
@@ -40,10 +42,11 @@ export default function StudentListItem({
       <div className="flex items-center justify-center gap-2">
         <button
           type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-dashboard-accent text-dashboard-surface"
-          aria-label={`Abrir perfil de ${student.fullName}`}
+          className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-dashboard-accent text-dashboard-surface"
+          aria-label={`Editar a ${student.fullName}`}
+          onClick={() => onEdit(student)}
         >
-          <Eye className="size-4" />
+          <Pencil className="size-4" />
         </button>
 
         <button

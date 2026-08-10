@@ -8,12 +8,22 @@ export const studentsSlice = createSlice({
     addStudent: (state, action: PayloadAction<Student>) => {
       state.push(action.payload);
     },
+    updateStudent: (state, action: PayloadAction<Student>) => {
+      const studentIndex = state.findIndex(
+        (student) => student.id === action.payload.id,
+      );
+
+      if (studentIndex !== -1) {
+        state[studentIndex] = action.payload;
+      }
+    },
     deleteStudent: (state, action: PayloadAction<string>) => {
       return state.filter((student) => student.id !== action.payload);
     },
   },
 });
 
-export const { addStudent, deleteStudent } = studentsSlice.actions;
+export const { addStudent, updateStudent, deleteStudent } =
+  studentsSlice.actions;
 
 export default studentsSlice.reducer;
