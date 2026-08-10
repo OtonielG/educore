@@ -63,11 +63,7 @@ export default function Estudiantes() {
           onAdd={() => setIsAddModalOpen(true)}
           onSearch={setSearchQuery}
         />
-        <StudentsList
-          key={searchQuery}
-          searchQuery={searchQuery}
-          onEdit={setStudentToEdit}
-        />
+        <StudentsList searchQuery={searchQuery} onEdit={setStudentToEdit} />
       </div>
 
       {isAddModalOpen || studentToEdit ? (

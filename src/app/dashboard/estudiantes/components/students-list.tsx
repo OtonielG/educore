@@ -19,11 +19,16 @@ export default function StudentsList({
   searchQuery,
   onEdit,
 }: StudentsListProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    searchQuery: "",
+  });
   const [studentToDelete, setStudentToDelete] = useState<Student | null>(null);
   const dispatch = useDispatch();
   const students = useSelector(selectStudents);
   const normalizedQuery = searchQuery.toLowerCase();
+  const currentPage =
+    pagination.searchQuery === searchQuery ? pagination.currentPage : 1;
   const filteredStudents = useMemo(() => {
     if (!normalizedQuery) {
       return students;
@@ -48,7 +53,10 @@ export default function StudentsList({
   );
 
   function handlePageChange(page: number) {
-    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+    setPagination({
+      currentPage: Math.min(Math.max(page, 1), totalPages),
+      searchQuery,
+    });
   }
 
   function handleConfirmDelete() {
