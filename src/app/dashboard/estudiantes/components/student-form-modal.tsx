@@ -175,7 +175,10 @@ export default function StudentFormModal({
                 type="tel"
                 name="phone"
                 inputMode="numeric"
-                pattern="[0-9]+"
+                pattern="[0-9]{8}"
+                minLength={8}
+                maxLength={8}
+                title="Ingresa un telefono de 8 numeros"
                 defaultValue={student?.phone}
                 onInput={(event) => {
                   event.currentTarget.value = event.currentTarget.value.replace(
