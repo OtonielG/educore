@@ -31,12 +31,17 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
   }, [normalizedQuery, students]);
 
   const totalPages = Math.ceil(filteredStudents.length / STUDENTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * STUDENTS_PER_PAGE;
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (safeCurrentPage - 1) * STUDENTS_PER_PAGE;
 
   const visibleStudents = filteredStudents.slice(
     startIndex,
     startIndex + STUDENTS_PER_PAGE,
   );
+
+  function handlePageChange(page: number) {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  }
 
   return (
     <div className="mt-6">
@@ -57,9 +62,9 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
           </ul>
 
           <StudentsPagination
-            currentPage={currentPage}
+            currentPage={safeCurrentPage}
             totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            onPageChange={handlePageChange}
           />
         </>
       )}
