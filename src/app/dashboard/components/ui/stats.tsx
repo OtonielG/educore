@@ -10,12 +10,14 @@ import { useSelector } from "react-redux";
 
 import { useCountUp } from "@/src/hooks/use-count-up";
 import { selectStudentsPaymentStatusTotals } from "@/src/store/students/selectors";
+import { selectTeachersTotal } from "@/src/store/teachers/selectors";
 
 export default function Stats() {
   const { solventes, morosos } = useSelector(selectStudentsPaymentStatusTotals);
+  const totalTeachers = useSelector(selectTeachersTotal);
   const totalStudents = solventes + morosos;
   const animatedTotalStudents = useCountUp(totalStudents);
-  const animatedTeachers = useCountUp(8);
+  const animatedTeachers = useCountUp(totalTeachers);
   const animatedSolventes = useCountUp(solventes);
   const animatedMorosos = useCountUp(morosos);
 
