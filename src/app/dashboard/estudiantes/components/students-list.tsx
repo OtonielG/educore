@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useSelector } from "react-redux";
-import { STUDENTS_PER_PAGE } from "@/src/features/students";
+import { useDispatch, useSelector } from "react-redux";
+import { STUDENTS_PER_PAGE, type Student } from "@/src/features/students";
+import { deleteStudent } from "@/src/store/students/slice";
 import { selectStudents } from "@/src/store/students/selectors";
+import DeleteStudentModal from "./delete-student-modal";
 import StudentListHeader from "./student-list-header";
 import StudentListItem from "./student-list-item";
 import StudentsPagination from "./students-pagination";
@@ -14,6 +16,8 @@ type StudentsListProps = {
 
 export default function StudentsList({ searchQuery }: StudentsListProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [studentToDelete, setStudentToDelete] = useState<Student | null>(null);
+  const dispatch = useDispatch();
   const students = useSelector(selectStudents);
   const normalizedQuery = searchQuery.toLowerCase();
   const filteredStudents = useMemo(() => {
@@ -43,6 +47,15 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
     setCurrentPage(Math.min(Math.max(page, 1), totalPages));
   }
 
+  function handleConfirmDelete() {
+    if (!studentToDelete) {
+      return;
+    }
+
+    dispatch(deleteStudent(studentToDelete.id));
+    setStudentToDelete(null);
+  }
+
   return (
     <div className="mt-6">
       <StudentListHeader />
@@ -57,6 +70,7 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
                 key={student.id}
                 student={student}
                 isEven={index % 2 === 0}
+                onDelete={setStudentToDelete}
               />
             ))}
           </ul>
@@ -68,6 +82,14 @@ export default function StudentsList({ searchQuery }: StudentsListProps) {
           />
         </>
       )}
+
+      {studentToDelete ? (
+        <DeleteStudentModal
+          student={studentToDelete}
+          onCancel={() => setStudentToDelete(null)}
+          onConfirm={handleConfirmDelete}
+        />
+      ) : null}
     </div>
   );
 }

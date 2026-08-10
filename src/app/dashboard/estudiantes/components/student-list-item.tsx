@@ -4,11 +4,13 @@ import type { Student } from "@/src/features/students";
 type StudentListItemProps = {
   student: Student;
   isEven: boolean;
+  onDelete: (student: Student) => void;
 };
 
 export default function StudentListItem({
   student,
   isEven,
+  onDelete,
 }: StudentListItemProps) {
   const GenderIcon = student.gender === "Masculino" ? Mars : Venus;
 
@@ -46,8 +48,9 @@ export default function StudentListItem({
 
         <button
           type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"
+          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600 cursor-pointer"
           aria-label={`Eliminar a ${student.fullName}`}
+          onClick={() => onDelete(student)}
         >
           <Trash2 className="size-4" />
         </button>
