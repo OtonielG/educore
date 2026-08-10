@@ -92,14 +92,21 @@ const notificationDetails: Record<NotificationType, NotificationDetails> = {
 
 export default function Notifications() {
   const notifications = useSelector(selectNotifications);
-  const [currentTime, setCurrentTime] = useState(Date.now);
+  const [currentTime, setCurrentTime] = useState<number | null>(null);
 
   useEffect(() => {
+    const initialTimeoutId = setTimeout(() => {
+      setCurrentTime(Date.now());
+    }, 0);
+
     const intervalId = setInterval(() => {
       setCurrentTime(Date.now());
     }, ONE_MINUTE);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      clearTimeout(initialTimeoutId);
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
@@ -146,7 +153,9 @@ export default function Notifications() {
                   </h3>
 
                   <span className="shrink-0 text-[11px] text-dashboard-text-muted sm:text-xs">
-                    {formatElapsedTime(notification.createdAt, currentTime)}
+                    {currentTime === null
+                      ? null
+                      : formatElapsedTime(notification.createdAt, currentTime)}
                   </span>
                 </div>
 

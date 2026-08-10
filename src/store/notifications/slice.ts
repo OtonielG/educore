@@ -1,10 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type {
-  NewNotification,
-  Notification,
+import {
+  notifications,
+  type NewNotification,
+  type Notification,
 } from "@/src/features/notifications";
 
-const initialState: Notification[] = [];
+const initialState: Notification[] = notifications;
 
 export const notificationsSlice = createSlice({
   name: "notifications",
