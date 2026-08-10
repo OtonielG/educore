@@ -140,6 +140,8 @@ export default function StudentFormModal({
                 type="text"
                 name="fullName"
                 defaultValue={student?.fullName}
+                pattern={"\\s*\\S+\\s+\\S+.*"}
+                title="Ingresa al menos dos palabras"
                 required
               />
             </label>
