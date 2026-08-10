@@ -1,28 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import {
-  ArrowDownWideNarrow,
-  Plus,
-  Search,
-  SlidersHorizontal,
-  type LucideIcon,
-} from "lucide-react";
-
-const actions = [
-  {
-    label: "Filtrar estudiantes",
-    icon: SlidersHorizontal,
-  },
-  {
-    label: "Ordenar estudiantes",
-    icon: ArrowDownWideNarrow,
-  },
-  {
-    label: "Agregar estudiante",
-    icon: Plus,
-  },
-];
+import { Plus, Search } from "lucide-react";
 
 type SearchFormProps = {
   onSearch: (query: string) => void;
@@ -73,24 +52,6 @@ function SearchForm({ onSearch }: SearchFormProps) {
   );
 }
 
-function ToolbarAction({
-  label,
-  icon: Icon,
-}: {
-  label: string;
-  icon: LucideIcon;
-}) {
-  return (
-    <button
-      type="button"
-      className="flex size-9 items-center justify-center rounded-full text-dashboard-surface/80 bg-dashboard-accent"
-      aria-label={label}
-    >
-      <Icon className="size-5" />
-    </button>
-  );
-}
-
 type StudentsToolbarProps = {
   onSearch: (query: string) => void;
 };
@@ -106,13 +67,13 @@ export default function StudentsToolbar({ onSearch }: StudentsToolbarProps) {
         <SearchForm onSearch={onSearch} />
 
         <div className="flex shrink-0 items-center gap-3">
-          {actions.map((action) => (
-            <ToolbarAction
-              key={action.label}
-              label={action.label}
-              icon={action.icon}
-            />
-          ))}
+          <button
+            type="button"
+            className="flex size-9 items-center justify-center rounded-full text-dashboard-surface/80 bg-dashboard-accent"
+            aria-label="Agregar estudiante"
+          >
+            <Plus className="size-5" />
+          </button>
         </div>
       </div>
     </div>
