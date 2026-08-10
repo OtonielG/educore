@@ -25,6 +25,14 @@ function getDateInputValue(birthDate?: string) {
     : birthDate;
 }
 
+function getStudentBirthDateValue(birthDate: string) {
+  const dateParts = birthDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  return dateParts
+    ? `${dateParts[3]}/${dateParts[2]}/${dateParts[1]}`
+    : birthDate;
+}
+
 export default function StudentFormModal({
   code,
   student,
@@ -85,7 +93,7 @@ export default function StudentFormModal({
 
     onSubmit({
       fullName: String(formData.get("fullName")).trim(),
-      birthDate: String(formData.get("birthDate")),
+      birthDate: getStudentBirthDateValue(String(formData.get("birthDate"))),
       phone: String(formData.get("phone")).trim(),
       grade: String(formData.get("grade")) as Student["grade"],
       average: Number(formData.get("average")),
