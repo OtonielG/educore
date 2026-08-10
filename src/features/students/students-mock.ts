@@ -2,7 +2,7 @@ import type { Student } from "./students-types";
 
 export const students: Student[] = [
   {
-    id: 1,
+    id: "student-001",
     fullName: "Carlos Hernández López",
     code: "AL-001",
     birthDate: "12/03/2011",
@@ -13,7 +13,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 2,
+    id: "student-002",
     fullName: "María Fernanda López",
     code: "AL-002",
     birthDate: "25/07/2010",
@@ -24,7 +24,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 3,
+    id: "student-003",
     fullName: "José Antonio Martínez",
     code: "AL-003",
     birthDate: "08/11/2009",
@@ -35,7 +35,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 4,
+    id: "student-004",
     fullName: "Ana Sofía Rodríguez",
     code: "AL-004",
     birthDate: "17/01/2011",
@@ -46,7 +46,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 5,
+    id: "student-005",
     fullName: "Luis Fernando García",
     code: "AL-005",
     birthDate: "04/05/2010",
@@ -57,7 +57,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 6,
+    id: "student-006",
     fullName: "Sofía Alejandra Morales",
     code: "AL-006",
     birthDate: "29/09/2009",
@@ -68,7 +68,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 7,
+    id: "student-007",
     fullName: "Daniel Alejandro Pérez",
     code: "AL-007",
     birthDate: "14/02/2011",
@@ -79,7 +79,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 8,
+    id: "student-008",
     fullName: "Valeria Isabel Castillo",
     code: "AL-008",
     birthDate: "21/06/2010",
@@ -90,7 +90,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 9,
+    id: "student-009",
     fullName: "Miguel Ángel Ramírez",
     code: "AL-009",
     birthDate: "09/10/2009",
@@ -101,7 +101,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 10,
+    id: "student-010",
     fullName: "Camila Andrea González",
     code: "AL-010",
     birthDate: "03/04/2011",
@@ -112,7 +112,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 11,
+    id: "student-011",
     fullName: "Fernando Estuardo Díaz",
     code: "AL-011",
     birthDate: "18/08/2010",
@@ -123,7 +123,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 12,
+    id: "student-012",
     fullName: "Lucía Fernanda Herrera",
     code: "AL-012",
     birthDate: "27/12/2009",
@@ -134,7 +134,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 13,
+    id: "student-013",
     fullName: "Andrés Eduardo Méndez",
     code: "AL-013",
     birthDate: "11/03/2011",
@@ -145,7 +145,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 14,
+    id: "student-014",
     fullName: "Isabella María Reyes",
     code: "AL-014",
     birthDate: "30/07/2010",
@@ -156,7 +156,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 15,
+    id: "student-015",
     fullName: "Javier Alejandro Vásquez",
     code: "AL-015",
     birthDate: "06/11/2009",
@@ -167,7 +167,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 16,
+    id: "student-016",
     fullName: "Daniela Paola Aguilar",
     code: "AL-016",
     birthDate: "23/01/2011",
@@ -178,7 +178,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 17,
+    id: "student-017",
     fullName: "Diego Armando López",
     code: "AL-017",
     birthDate: "15/05/2010",
@@ -189,7 +189,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 18,
+    id: "student-018",
     fullName: "Gabriela Alejandra Fuentes",
     code: "AL-018",
     birthDate: "02/09/2009",
@@ -200,7 +200,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 19,
+    id: "student-019",
     fullName: "Alejandro José Ortiz",
     code: "AL-019",
     birthDate: "20/02/2011",
@@ -211,7 +211,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 20,
+    id: "student-020",
     fullName: "Natalia Fernanda Cabrera",
     code: "AL-020",
     birthDate: "13/06/2010",
@@ -222,7 +222,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 21,
+    id: "student-021",
     fullName: "Sebastián Andrés Castro",
     code: "AL-021",
     birthDate: "28/10/2009",
@@ -233,7 +233,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 22,
+    id: "student-022",
     fullName: "Paula Andrea Mendoza",
     code: "AL-022",
     birthDate: "07/04/2011",
@@ -244,7 +244,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 23,
+    id: "student-023",
     fullName: "Mateo Alejandro Rivera",
     code: "AL-023",
     birthDate: "16/08/2010",
@@ -255,7 +255,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 24,
+    id: "student-024",
     fullName: "Andrea Lucía Soto",
     code: "AL-024",
     birthDate: "01/12/2009",
@@ -266,7 +266,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 25,
+    id: "student-025",
     fullName: "Emilio José Vargas",
     code: "AL-025",
     birthDate: "24/03/2011",
@@ -277,7 +277,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 26,
+    id: "student-026",
     fullName: "Regina Sofía Salazar",
     code: "AL-026",
     birthDate: "10/07/2010",
@@ -288,7 +288,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 27,
+    id: "student-027",
     fullName: "Nicolás Eduardo Flores",
     code: "AL-027",
     birthDate: "19/11/2009",
@@ -299,7 +299,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 28,
+    id: "student-028",
     fullName: "Mariana Isabel Rojas",
     code: "AL-028",
     birthDate: "05/01/2011",
@@ -310,7 +310,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 29,
+    id: "student-029",
     fullName: "Samuel David Guerra",
     code: "AL-029",
     birthDate: "22/05/2010",
@@ -321,7 +321,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 30,
+    id: "student-030",
     fullName: "Elías Alejandro Miranda",
     code: "AL-030",
     birthDate: "12/09/2009",
@@ -332,7 +332,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 31,
+    id: "student-031",
     fullName: "David Alejandro Escobar",
     code: "AL-031",
     birthDate: "26/02/2011",
@@ -343,7 +343,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 32,
+    id: "student-032",
     fullName: "Sara Fernanda Monroy",
     code: "AL-032",
     birthDate: "08/06/2010",
@@ -354,7 +354,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 33,
+    id: "student-033",
     fullName: "Ángel Estuardo Molina",
     code: "AL-033",
     birthDate: "17/10/2009",
@@ -365,7 +365,7 @@ export const students: Student[] = [
     paymentStatus: "Moroso",
   },
   {
-    id: 34,
+    id: "student-034",
     fullName: "Adriana Sofía Pineda",
     code: "AL-034",
     birthDate: "04/04/2011",
@@ -376,7 +376,7 @@ export const students: Student[] = [
     paymentStatus: "Solvente",
   },
   {
-    id: 35,
+    id: "student-035",
     fullName: "Pablo Andrés Alvarado",
     code: "AL-035",
     birthDate: "31/08/2010",
