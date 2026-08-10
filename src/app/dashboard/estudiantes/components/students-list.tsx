@@ -6,6 +6,7 @@ import { STUDENTS_PER_PAGE, type Student } from "@/src/features/students";
 import DeletePersonModal from "../../components/shared/delete-person-modal";
 import DirectoryPagination from "../../components/shared/directory-pagination";
 import { usePaginatedSearch } from "../../components/shared/use-paginated-search";
+import { addNotification } from "@/src/store/notifications/slice";
 import { deleteStudent } from "@/src/store/students/slice";
 import { selectStudents } from "@/src/store/students/selectors";
 import StudentListHeader from "./student-list-header";
@@ -50,6 +51,12 @@ export default function StudentsList({
     }
 
     dispatch(deleteStudent(studentToDelete.id));
+    dispatch(
+      addNotification({
+        type: "student-deleted",
+        personName: studentToDelete.fullName,
+      }),
+    );
     setStudentToDelete(null);
   }
 

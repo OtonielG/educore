@@ -6,6 +6,7 @@ import type { NewStudent, Student } from "@/src/features/students";
 import DirectoryToolbar from "../components/shared/directory-toolbar";
 import PersonFormModal from "../components/shared/person-form-modal";
 import { getNextPersonCode } from "../utils/get-next-person-code";
+import { addNotification } from "@/src/store/notifications/slice";
 import { selectStudents } from "@/src/store/students/selectors";
 import { addStudent, updateStudent } from "@/src/store/students/slice";
 import StudentsList from "./components/students-list";
@@ -18,11 +19,17 @@ export default function Estudiantes() {
   const students = useSelector(selectStudents);
 
   function handleAddStudent(studentData: NewStudent) {
+    const newStudent: Student = {
+      ...studentData,
+      id: crypto.randomUUID(),
+      code: getNextPersonCode(students, "AL"),
+    };
+
+    dispatch(addStudent(newStudent));
     dispatch(
-      addStudent({
-        ...studentData,
-        id: crypto.randomUUID(),
-        code: getNextPersonCode(students, "AL"),
+      addNotification({
+        type: "student-added",
+        personName: newStudent.fullName,
       }),
     );
     setIsAddModalOpen(false);
@@ -33,11 +40,17 @@ export default function Estudiantes() {
       return;
     }
 
+    const updatedStudent: Student = {
+      ...studentData,
+      id: studentToEdit.id,
+      code: studentToEdit.code,
+    };
+
+    dispatch(updateStudent(updatedStudent));
     dispatch(
-      updateStudent({
-        ...studentData,
-        id: studentToEdit.id,
-        code: studentToEdit.code,
+      addNotification({
+        type: "student-updated",
+        personName: updatedStudent.fullName,
       }),
     );
     setStudentToEdit(null);
