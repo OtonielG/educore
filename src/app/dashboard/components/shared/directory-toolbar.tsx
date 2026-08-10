@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useEffect, useRef, useState } from "react";
+import { type SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Plus, Search } from "lucide-react";
 
 type SearchFormProps = {
@@ -23,7 +23,7 @@ function SearchForm({ onSearch }: SearchFormProps) {
     };
   }, [onSearch, query]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SyntheticEvent<HTMLFormElement, SubmitEvent>) {
     event.preventDefault();
 
     if (debounceRef.current) {
