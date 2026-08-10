@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BellRing,
   GraduationCap,
@@ -6,37 +8,9 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
-
-const notifications = [
-  {
-    id: 1,
-    type: "student-added",
-    title: "Estudiante agregado",
-    description: "Daniel Méndez García fue agregado al sistema.",
-    time: "Hace 10 min",
-  },
-  {
-    id: 2,
-    type: "teacher-updated",
-    title: "Maestro modificado",
-    description: "La información de Marvin López fue actualizada.",
-    time: "Hace 25 min",
-  },
-  {
-    id: 3,
-    type: "student-deleted",
-    title: "Estudiante eliminado",
-    description: "Camila Morales Díaz fue eliminada del sistema.",
-    time: "Hace 1 h",
-  },
-  {
-    id: 4,
-    type: "teacher-added",
-    title: "Maestro agregado",
-    description: "Sergio Hernández fue agregado al sistema.",
-    time: "Hace 2 h",
-  },
-];
+import { useSelector } from "react-redux";
+import type { NotificationType } from "@/src/features/notifications";
+import { selectNotifications } from "@/src/store/notifications/selectors";
 
 const notificationStyles = {
   added: {
@@ -62,7 +36,61 @@ const notificationStyles = {
   },
 };
 
+type NotificationDetails = {
+  action: keyof typeof notificationStyles;
+  entity: "student" | "teacher";
+  title: string;
+  getDescription: (personName: string) => string;
+};
+
+const notificationDetails: Record<NotificationType, NotificationDetails> = {
+  "student-added": {
+    action: "added",
+    entity: "student",
+    title: "Estudiante agregado",
+    getDescription: (personName) =>
+      `${personName} fue agregado al sistema.`,
+  },
+  "student-updated": {
+    action: "updated",
+    entity: "student",
+    title: "Estudiante modificado",
+    getDescription: (personName) =>
+      `La información de ${personName} fue actualizada.`,
+  },
+  "student-deleted": {
+    action: "deleted",
+    entity: "student",
+    title: "Estudiante eliminado",
+    getDescription: (personName) =>
+      `${personName} fue eliminado del sistema.`,
+  },
+  "teacher-added": {
+    action: "added",
+    entity: "teacher",
+    title: "Maestro agregado",
+    getDescription: (personName) =>
+      `${personName} fue agregado al sistema.`,
+  },
+  "teacher-updated": {
+    action: "updated",
+    entity: "teacher",
+    title: "Maestro modificado",
+    getDescription: (personName) =>
+      `La información de ${personName} fue actualizada.`,
+  },
+  "teacher-deleted": {
+    action: "deleted",
+    entity: "teacher",
+    title: "Maestro eliminado",
+    getDescription: (personName) =>
+      `${personName} fue eliminado del sistema.`,
+  },
+};
+
 export default function Notifications() {
+  const notifications = useSelector(selectNotifications);
+
   return (
     <section className="flex h-auto w-full flex-col gap-3 rounded-3xl bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)] lg:h-full">
       <div className="flex items-center justify-between">
@@ -72,17 +100,18 @@ export default function Notifications() {
       </div>
 
       <ul className="flex min-h-0 flex-1 flex-col gap-2">
+        {notifications.length === 0 ? (
+          <li className="flex flex-1 items-center justify-center text-sm text-dashboard-text-muted">
+            No hay notificaciones
+          </li>
+        ) : null}
+
         {notifications.map((notification) => {
-          const action = notification.type.split("-")[1] as
-            | "added"
-            | "updated"
-            | "deleted";
-
-          const entity = notification.type.split("-")[0];
-
-          const style = notificationStyles[action];
+          const details = notificationDetails[notification.type];
+          const style = notificationStyles[details.action];
           const ActionIcon = style.icon;
-          const EntityIcon = entity === "student" ? GraduationCap : Users;
+          const EntityIcon =
+            details.entity === "student" ? GraduationCap : Users;
 
           return (
             <li
@@ -102,16 +131,16 @@ export default function Notifications() {
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="truncate text-sm font-semibold">
-                    {notification.title}
+                    {details.title}
                   </h3>
 
                   <span className="shrink-0 text-[11px] text-dashboard-text-muted sm:text-xs">
-                    {notification.time}
+                    Ahora
                   </span>
                 </div>
 
                 <p className="mt-1 line-clamp-2 text-xs leading-snug text-dashboard-text-muted sm:text-sm">
-                  {notification.description}
+                  {details.getDescription(notification.personName)}
                 </p>
               </div>
             </li>
