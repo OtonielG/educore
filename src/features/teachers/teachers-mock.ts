@@ -83,4 +83,4 @@ export const teachers: Teacher[] = [
   },
 ];
 
-export const TEACHERS_PER_PAGE = 10;
+export const TEACHERS_PER_PAGE = 8;

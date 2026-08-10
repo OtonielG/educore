@@ -1,14 +1,14 @@
-type StudentsPaginationProps = {
+type DirectoryPaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 };
 
-export default function StudentsPagination({
+export default function DirectoryPagination({
   currentPage,
   totalPages,
   onPageChange,
-}: StudentsPaginationProps) {
+}: DirectoryPaginationProps) {
   return (
     <div className="mt-5 flex items-center justify-between gap-3">
       <button

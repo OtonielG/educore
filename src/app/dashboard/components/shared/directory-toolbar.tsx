@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { Plus, Search } from "lucide-react";
 
 type SearchFormProps = {
@@ -52,20 +52,22 @@ function SearchForm({ onSearch }: SearchFormProps) {
   );
 }
 
-type StudentsToolbarProps = {
+type DirectoryToolbarProps = {
+  title: string;
+  addLabel: string;
   onAdd: () => void;
   onSearch: (query: string) => void;
 };
 
-export default function StudentsToolbar({
+export default function DirectoryToolbar({
+  title,
+  addLabel,
   onAdd,
   onSearch,
-}: StudentsToolbarProps) {
+}: DirectoryToolbarProps) {
   return (
     <div className="bg-dashboard-surface w-full flex flex-col justify-between items-start lg:items-center lg:flex-row gap-2 lg:gap-16">
-      <h2 className="shrink-0 font-bespoke font-semibold">
-        Todos Los Estudiantes
-      </h2>
+      <h2 className="shrink-0 font-bespoke font-semibold">{title}</h2>
 
       <div className="flex w-full min-w-0 flex-col gap-3 lg:w-auto lg:flex-1 lg:flex-row lg:justify-end">
         <SearchForm onSearch={onSearch} />
@@ -74,7 +76,7 @@ export default function StudentsToolbar({
           <button
             type="button"
             className="flex size-9 items-center justify-center rounded-full text-dashboard-surface/80 bg-dashboard-accent cursor-pointer hover:bg-dashboard-accent/80"
-            aria-label="Agregar estudiante"
+            aria-label={addLabel}
             onClick={onAdd}
           >
             <Plus className="size-5" />

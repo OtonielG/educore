@@ -1,63 +1,48 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { STUDENTS_PER_PAGE, type Student } from "@/src/features/students";
+import DeletePersonModal from "../../components/shared/delete-person-modal";
+import DirectoryPagination from "../../components/shared/directory-pagination";
+import { usePaginatedSearch } from "../../components/shared/use-paginated-search";
 import { deleteStudent } from "@/src/store/students/slice";
 import { selectStudents } from "@/src/store/students/selectors";
-import DeleteStudentModal from "./delete-student-modal";
 import StudentListHeader from "./student-list-header";
 import StudentListItem from "./student-list-item";
-import StudentsPagination from "./students-pagination";
 
 type StudentsListProps = {
   searchQuery: string;
   onEdit: (student: Student) => void;
 };
 
+function matchesStudentQuery(student: Student, normalizedQuery: string) {
+  return (
+    student.fullName.toLowerCase().includes(normalizedQuery) ||
+    student.code.toLowerCase().includes(normalizedQuery) ||
+    student.phone.includes(normalizedQuery)
+  );
+}
+
 export default function StudentsList({
   searchQuery,
   onEdit,
 }: StudentsListProps) {
-  const [pagination, setPagination] = useState({
-    currentPage: 1,
-    searchQuery: "",
-  });
   const [studentToDelete, setStudentToDelete] = useState<Student | null>(null);
   const dispatch = useDispatch();
   const students = useSelector(selectStudents);
-  const normalizedQuery = searchQuery.toLowerCase();
-  const currentPage =
-    pagination.searchQuery === searchQuery ? pagination.currentPage : 1;
-  const filteredStudents = useMemo(() => {
-    if (!normalizedQuery) {
-      return students;
-    }
-
-    return students.filter((student) => {
-      return (
-        student.fullName.toLowerCase().includes(normalizedQuery) ||
-        student.code.toLowerCase().includes(normalizedQuery) ||
-        student.phone.includes(normalizedQuery)
-      );
-    });
-  }, [normalizedQuery, students]);
-
-  const totalPages = Math.ceil(filteredStudents.length / STUDENTS_PER_PAGE);
-  const safeCurrentPage = Math.min(currentPage, totalPages);
-  const startIndex = (safeCurrentPage - 1) * STUDENTS_PER_PAGE;
-
-  const visibleStudents = filteredStudents.slice(
-    startIndex,
-    startIndex + STUDENTS_PER_PAGE,
-  );
-
-  function handlePageChange(page: number) {
-    setPagination({
-      currentPage: Math.min(Math.max(page, 1), totalPages),
-      searchQuery,
-    });
-  }
+  const {
+    filteredItems: filteredStudents,
+    visibleItems: visibleStudents,
+    currentPage,
+    totalPages,
+    handlePageChange,
+  } = usePaginatedSearch({
+    items: students,
+    itemsPerPage: STUDENTS_PER_PAGE,
+    searchQuery,
+    matchesQuery: matchesStudentQuery,
+  });
 
   function handleConfirmDelete() {
     if (!studentToDelete) {
@@ -88,8 +73,8 @@ export default function StudentsList({
             ))}
           </ul>
 
-          <StudentsPagination
-            currentPage={safeCurrentPage}
+          <DirectoryPagination
+            currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange}
           />
@@ -97,8 +82,9 @@ export default function StudentsList({
       )}
 
       {studentToDelete ? (
-        <DeleteStudentModal
-          student={studentToDelete}
+        <DeletePersonModal
+          personName={studentToDelete.fullName}
+          personType="estudiante"
           onCancel={() => setStudentToDelete(null)}
           onConfirm={handleConfirmDelete}
         />

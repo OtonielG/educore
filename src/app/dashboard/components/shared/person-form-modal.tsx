@@ -1,14 +1,27 @@
 "use client";
 
-import { FormEvent, useEffect, useId, useRef } from "react";
+import { type FormEvent, useEffect, useId, useRef } from "react";
 import type { NewStudent, Student } from "@/src/features/students";
+import type { NewTeacher, Teacher } from "@/src/features/teachers";
 
-type StudentFormModalProps = {
+type CommonProps = {
   code: string;
-  student?: Student;
   onCancel: () => void;
+};
+
+type StudentFormProps = CommonProps & {
+  personType: "student";
+  person?: Student;
   onSubmit: (student: NewStudent) => void;
 };
+
+type TeacherFormProps = CommonProps & {
+  personType: "teacher";
+  person?: Teacher;
+  onSubmit: (teacher: NewTeacher) => void;
+};
+
+type PersonFormModalProps = StudentFormProps | TeacherFormProps;
 
 const inputClassName =
   "mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 outline-none focus:border-dashboard-accent";
@@ -25,7 +38,7 @@ function getDateInputValue(birthDate?: string) {
     : birthDate;
 }
 
-function getStudentBirthDateValue(birthDate: string) {
+function getBirthDateValue(birthDate: string) {
   const dateParts = birthDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 
   return dateParts
@@ -42,16 +55,13 @@ function getTodayDateInputValue() {
   return `${year}-${month}-${day}`;
 }
 
-export default function StudentFormModal({
-  code,
-  student,
-  onCancel,
-  onSubmit,
-}: StudentFormModalProps) {
+export default function PersonFormModal(props: PersonFormModalProps) {
+  const { code, onCancel, person } = props;
   const titleId = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
   const maxBirthDate = getTodayDateInputValue();
+  const personLabel = props.personType === "student" ? "estudiante" : "maestro";
 
   useEffect(() => {
     const previousActiveElement =
@@ -92,7 +102,9 @@ export default function StudentFormModal({
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      previousActiveElement?.focus();
+      if (previousActiveElement?.isConnected) {
+        previousActiveElement.focus();
+      }
     };
   }, [onCancel]);
 
@@ -100,17 +112,29 @@ export default function StudentFormModal({
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-
-    onSubmit({
+    const commonData = {
       fullName: String(formData.get("fullName")).trim(),
-      birthDate: getStudentBirthDateValue(String(formData.get("birthDate"))),
+      birthDate: getBirthDateValue(String(formData.get("birthDate"))),
       phone: String(formData.get("phone")).trim(),
-      grade: String(formData.get("grade")) as Student["grade"],
-      average: Number(formData.get("average")),
       gender: String(formData.get("gender")) as Student["gender"],
-      paymentStatus: String(
-        formData.get("paymentStatus"),
-      ) as Student["paymentStatus"],
+    };
+
+    if (props.personType === "student") {
+      props.onSubmit({
+        ...commonData,
+        grade: String(formData.get("grade")) as Student["grade"],
+        average: Number(formData.get("average")),
+        paymentStatus: String(
+          formData.get("paymentStatus"),
+        ) as Student["paymentStatus"],
+      });
+      return;
+    }
+
+    props.onSubmit({
+      ...commonData,
+      classSubject: String(formData.get("classSubject")).trim(),
+      email: String(formData.get("email")).trim(),
     });
   }
 
@@ -128,7 +152,7 @@ export default function StudentFormModal({
           onSubmit={handleSubmit}
         >
           <h2 id={titleId} className="font-bespoke text-xl font-semibold">
-            {student ? "Editar estudiante" : "Agregar estudiante"}
+            {person ? "Editar" : "Agregar"} {personLabel}
           </h2>
 
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -139,7 +163,7 @@ export default function StudentFormModal({
                 className={inputClassName}
                 type="text"
                 name="fullName"
-                defaultValue={student?.fullName}
+                defaultValue={person?.fullName}
                 pattern={"\\s*\\S+\\s+\\S+.*"}
                 title="Ingresa al menos dos palabras"
                 required
@@ -162,7 +186,7 @@ export default function StudentFormModal({
                 className={inputClassName}
                 type="date"
                 name="birthDate"
-                defaultValue={getDateInputValue(student?.birthDate)}
+                defaultValue={getDateInputValue(person?.birthDate)}
                 max={maxBirthDate}
                 required
               />
@@ -179,7 +203,7 @@ export default function StudentFormModal({
                 minLength={8}
                 maxLength={8}
                 title="Ingresa un telefono de 8 numeros"
-                defaultValue={student?.phone}
+                defaultValue={person?.phone}
                 onInput={(event) => {
                   event.currentTarget.value = event.currentTarget.value.replace(
                     /\D/g,
@@ -190,39 +214,67 @@ export default function StudentFormModal({
               />
             </label>
 
-            <label className="text-sm font-medium">
-              Grado
-              <select
-                className={inputClassName}
-                name="grade"
-                defaultValue={student?.grade ?? "Primero básico"}
-                required
-              >
-                <option value="Primero básico">Primero basico</option>
-                <option value="Segundo básico">Segundo basico</option>
-                <option value="Tercero básico">Tercero basico</option>
-              </select>
-            </label>
+            {props.personType === "student" ? (
+              <>
+                <label className="text-sm font-medium">
+                  Grado
+                  <select
+                    className={inputClassName}
+                    name="grade"
+                    defaultValue={props.person?.grade ?? "Primero básico"}
+                    required
+                  >
+                    <option value="Primero básico">Primero basico</option>
+                    <option value="Segundo básico">Segundo basico</option>
+                    <option value="Tercero básico">Tercero basico</option>
+                  </select>
+                </label>
 
-            <label className="text-sm font-medium">
-              Promedio
-              <input
-                className={inputClassName}
-                type="number"
-                name="average"
-                min="0"
-                max="100"
-                defaultValue={student?.average}
-                required
-              />
-            </label>
+                <label className="text-sm font-medium">
+                  Promedio
+                  <input
+                    className={inputClassName}
+                    type="number"
+                    name="average"
+                    min="0"
+                    max="100"
+                    defaultValue={props.person?.average}
+                    required
+                  />
+                </label>
+              </>
+            ) : (
+              <>
+                <label className="text-sm font-medium">
+                  Clase que imparte
+                  <input
+                    className={inputClassName}
+                    type="text"
+                    name="classSubject"
+                    defaultValue={props.person?.classSubject}
+                    required
+                  />
+                </label>
+
+                <label className="text-sm font-medium">
+                  Correo electronico
+                  <input
+                    className={inputClassName}
+                    type="email"
+                    name="email"
+                    defaultValue={props.person?.email}
+                    required
+                  />
+                </label>
+              </>
+            )}
 
             <label className="text-sm font-medium">
               Genero
               <select
                 className={inputClassName}
                 name="gender"
-                defaultValue={student?.gender ?? "Masculino"}
+                defaultValue={person?.gender ?? "Masculino"}
                 required
               >
                 <option value="Masculino">Masculino</option>
@@ -230,18 +282,20 @@ export default function StudentFormModal({
               </select>
             </label>
 
-            <label className="text-sm font-medium">
-              Estado de pago
-              <select
-                className={inputClassName}
-                name="paymentStatus"
-                defaultValue={student?.paymentStatus ?? "Solvente"}
-                required
-              >
-                <option value="Solvente">Solvente</option>
-                <option value="Moroso">Moroso</option>
-              </select>
-            </label>
+            {props.personType === "student" ? (
+              <label className="text-sm font-medium">
+                Estado de pago
+                <select
+                  className={inputClassName}
+                  name="paymentStatus"
+                  defaultValue={props.person?.paymentStatus ?? "Solvente"}
+                  required
+                >
+                  <option value="Solvente">Solvente</option>
+                  <option value="Moroso">Moroso</option>
+                </select>
+              </label>
+            ) : null}
           </div>
 
           <div className="mt-6 flex justify-end gap-3">
@@ -257,7 +311,7 @@ export default function StudentFormModal({
               type="submit"
               className="cursor-pointer rounded-full bg-dashboard-accent px-4 py-2 text-sm font-medium text-dashboard-surface hover:bg-dashboard-accent/80"
             >
-              {student ? "Guardar cambios" : "Agregar"}
+              {person ? "Guardar cambios" : "Agregar"}
             </button>
           </div>
         </form>

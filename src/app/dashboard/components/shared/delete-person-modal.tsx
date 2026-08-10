@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import type { Student } from "@/src/features/students";
 
-type DeleteStudentModalProps = {
-  student: Student;
+type DeletePersonModalProps = {
+  personName: string;
+  personType: "estudiante" | "maestro";
   onCancel: () => void;
   onConfirm: () => void;
 };
 
-export default function DeleteStudentModal({
-  student,
+export default function DeletePersonModal({
+  personName,
+  personType,
   onCancel,
   onConfirm,
-}: DeleteStudentModalProps) {
+}: DeletePersonModalProps) {
   const titleId = useId();
   const descriptionId = useId();
   const modalRef = useRef<HTMLDivElement>(null);
@@ -81,11 +82,11 @@ export default function DeleteStudentModal({
         aria-describedby={descriptionId}
       >
         <h2 id={titleId} className="font-bespoke text-xl font-semibold">
-          Eliminar estudiante
+          Eliminar {personType}
         </h2>
 
         <p id={descriptionId} className="mt-3 text-sm text-gray-600">
-          Esta accion eliminara a {student.fullName} de la lista.
+          Esta accion eliminara a {personName} de la lista.
         </p>
 
         <div className="mt-6 flex justify-end gap-3">
