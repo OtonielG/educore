@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   BellRing,
   GraduationCap,
@@ -9,8 +10,13 @@ import {
   Users,
 } from "lucide-react";
 import { useSelector } from "react-redux";
-import type { NotificationType } from "@/src/features/notifications";
+import {
+  formatElapsedTime,
+  type NotificationType,
+} from "@/src/features/notifications";
 import { selectNotifications } from "@/src/store/notifications/selectors";
+
+const ONE_MINUTE = 60_000;
 
 const notificationStyles = {
   added: {
@@ -90,6 +96,15 @@ const notificationDetails: Record<NotificationType, NotificationDetails> = {
 
 export default function Notifications() {
   const notifications = useSelector(selectNotifications);
+  const [currentTime, setCurrentTime] = useState(Date.now);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, ONE_MINUTE);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section className="flex h-auto w-full flex-col gap-3 rounded-3xl bg-dashboard-surface p-5 shadow-[inset_0_3px_8px_rgba(0,0,0,0.12),inset_0_-1px_3px_rgba(255,255,255,0.55)] lg:h-full">
@@ -135,7 +150,7 @@ export default function Notifications() {
                   </h3>
 
                   <span className="shrink-0 text-[11px] text-dashboard-text-muted sm:text-xs">
-                    Ahora
+                    {formatElapsedTime(notification.createdAt, currentTime)}
                   </span>
                 </div>
 
