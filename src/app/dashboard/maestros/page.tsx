@@ -6,6 +6,7 @@ import type { NewTeacher, Teacher } from "@/src/features/teachers";
 import DirectoryToolbar from "../components/shared/directory-toolbar";
 import PersonFormModal from "../components/shared/person-form-modal";
 import { getNextPersonCode } from "../utils/get-next-person-code";
+import { addNotification } from "@/src/store/notifications/slice";
 import { selectTeachers } from "@/src/store/teachers/selectors";
 import { addTeacher, updateTeacher } from "@/src/store/teachers/slice";
 import TeachersList from "./components/teachers-list";
@@ -18,11 +19,17 @@ export default function Maestros() {
   const teachers = useSelector(selectTeachers);
 
   function handleAddTeacher(teacherData: NewTeacher) {
+    const newTeacher: Teacher = {
+      ...teacherData,
+      id: crypto.randomUUID(),
+      code: getNextPersonCode(teachers, "MT"),
+    };
+
+    dispatch(addTeacher(newTeacher));
     dispatch(
-      addTeacher({
-        ...teacherData,
-        id: crypto.randomUUID(),
-        code: getNextPersonCode(teachers, "MT"),
+      addNotification({
+        type: "teacher-added",
+        personName: newTeacher.fullName,
       }),
     );
     setIsAddModalOpen(false);
@@ -33,11 +40,17 @@ export default function Maestros() {
       return;
     }
 
+    const updatedTeacher: Teacher = {
+      ...teacherData,
+      id: teacherToEdit.id,
+      code: teacherToEdit.code,
+    };
+
+    dispatch(updateTeacher(updatedTeacher));
     dispatch(
-      updateTeacher({
-        ...teacherData,
-        id: teacherToEdit.id,
-        code: teacherToEdit.code,
+      addNotification({
+        type: "teacher-updated",
+        personName: updatedTeacher.fullName,
       }),
     );
     setTeacherToEdit(null);

@@ -6,6 +6,7 @@ import { TEACHERS_PER_PAGE, type Teacher } from "@/src/features/teachers";
 import DeletePersonModal from "../../components/shared/delete-person-modal";
 import DirectoryPagination from "../../components/shared/directory-pagination";
 import { usePaginatedSearch } from "../../components/shared/use-paginated-search";
+import { addNotification } from "@/src/store/notifications/slice";
 import { selectTeachers } from "@/src/store/teachers/selectors";
 import { deleteTeacher } from "@/src/store/teachers/slice";
 import TeacherListHeader from "./teacher-list-header";
@@ -52,6 +53,12 @@ export default function TeachersList({
     }
 
     dispatch(deleteTeacher(teacherToDelete.id));
+    dispatch(
+      addNotification({
+        type: "teacher-deleted",
+        personName: teacherToDelete.fullName,
+      }),
+    );
     setTeacherToDelete(null);
   }
 
