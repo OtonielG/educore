@@ -1,10 +1,4 @@
-import {
-  LayoutDashboard,
-  Users,
-  GraduationCap,
-  BookOpen,
-  Settings,
-} from "lucide-react";
+import { LayoutDashboard, Users, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
 export const menuItems = [
@@ -22,16 +16,6 @@ export const menuItems = [
     label: "Maestros",
     href: "/dashboard/maestros",
     icon: GraduationCap,
-  },
-  {
-    label: "Clases",
-    href: "/dashboard/clases",
-    icon: BookOpen,
-  },
-  {
-    label: "Configuración",
-    href: "/dashboard/configuracion",
-    icon: Settings,
   },
 ];
 export default function Menu() {
