@@ -54,8 +54,7 @@ const notificationDetails: Record<NotificationType, NotificationDetails> = {
     action: "added",
     entity: "student",
     title: "Estudiante agregado",
-    getDescription: (personName) =>
-      `${personName} fue agregado al sistema.`,
+    getDescription: (personName) => `${personName} fue agregado al sistema.`,
   },
   "student-updated": {
     action: "updated",
@@ -68,15 +67,13 @@ const notificationDetails: Record<NotificationType, NotificationDetails> = {
     action: "deleted",
     entity: "student",
     title: "Estudiante eliminado",
-    getDescription: (personName) =>
-      `${personName} fue eliminado del sistema.`,
+    getDescription: (personName) => `${personName} fue eliminado del sistema.`,
   },
   "teacher-added": {
     action: "added",
     entity: "teacher",
     title: "Maestro agregado",
-    getDescription: (personName) =>
-      `${personName} fue agregado al sistema.`,
+    getDescription: (personName) => `${personName} fue agregado al sistema.`,
   },
   "teacher-updated": {
     action: "updated",
@@ -89,8 +86,7 @@ const notificationDetails: Record<NotificationType, NotificationDetails> = {
     action: "deleted",
     entity: "teacher",
     title: "Maestro eliminado",
-    getDescription: (personName) =>
-      `${personName} fue eliminado del sistema.`,
+    getDescription: (personName) => `${personName} fue eliminado del sistema.`,
   },
 };
 
@@ -126,7 +122,7 @@ export default function Notifications() {
           const style = notificationStyles[details.action];
           const ActionIcon = style.icon;
           const EntityIcon =
-            details.entity === "student" ? GraduationCap : Users;
+            details.entity === "student" ? Users : GraduationCap;
 
           return (
             <li
