@@ -53,10 +53,14 @@ function SearchForm({ onSearch }: SearchFormProps) {
 }
 
 type StudentsToolbarProps = {
+  onAdd: () => void;
   onSearch: (query: string) => void;
 };
 
-export default function StudentsToolbar({ onSearch }: StudentsToolbarProps) {
+export default function StudentsToolbar({
+  onAdd,
+  onSearch,
+}: StudentsToolbarProps) {
   return (
     <div className="bg-dashboard-surface w-full flex flex-col justify-between items-start lg:items-center lg:flex-row gap-2 lg:gap-16">
       <h2 className="shrink-0 font-bespoke font-semibold">
@@ -69,8 +73,9 @@ export default function StudentsToolbar({ onSearch }: StudentsToolbarProps) {
         <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
-            className="flex size-9 items-center justify-center rounded-full text-dashboard-surface/80 bg-dashboard-accent"
+            className="flex size-9 items-center justify-center rounded-full text-dashboard-surface/80 bg-dashboard-accent cursor-pointer hover:bg-dashboard-accent/80"
             aria-label="Agregar estudiante"
+            onClick={onAdd}
           >
             <Plus className="size-5" />
           </button>

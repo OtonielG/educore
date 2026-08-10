@@ -48,7 +48,7 @@ export default function StudentListItem({
 
         <button
           type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600 cursor-pointer"
+          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600 hover:bg-red-200 cursor-pointer"
           aria-label={`Eliminar a ${student.fullName}`}
           onClick={() => onDelete(student)}
         >

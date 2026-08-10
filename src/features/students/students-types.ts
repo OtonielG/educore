@@ -9,3 +9,5 @@ export type Student = {
   gender: "Masculino" | "Femenino";
   paymentStatus: "Solvente" | "Moroso";
 };
+
+export type NewStudent = Omit<Student, "id" | "code">;
