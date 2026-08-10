@@ -13,6 +13,7 @@ export const notificationsSlice = createSlice({
     addNotification: {
       reducer: (state, action: PayloadAction<Notification>) => {
         state.unshift(action.payload);
+        state.splice(4);
       },
       prepare: (notification: NewNotification) => ({
         payload: {
