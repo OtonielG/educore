@@ -33,6 +33,15 @@ function getStudentBirthDateValue(birthDate: string) {
     : birthDate;
 }
 
+function getTodayDateInputValue() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
 export default function StudentFormModal({
   code,
   student,
@@ -42,6 +51,7 @@ export default function StudentFormModal({
   const titleId = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const maxBirthDate = getTodayDateInputValue();
 
   useEffect(() => {
     const previousActiveElement =
@@ -151,6 +161,7 @@ export default function StudentFormModal({
                 type="date"
                 name="birthDate"
                 defaultValue={getDateInputValue(student?.birthDate)}
+                max={maxBirthDate}
                 required
               />
             </label>
