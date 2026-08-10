@@ -1,14 +1,50 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { UserRound, BellRing } from "lucide-react";
+import { useSelector } from "react-redux";
+import { selectNotifications } from "@/src/store/notifications/selectors";
+
+const ONE_MINUTE = 60_000;
+const RECENT_NOTIFICATION_TIME = 15 * ONE_MINUTE;
 
 export default function Navbar() {
+  const notifications = useSelector(selectNotifications);
+  const [currentTime, setCurrentTime] = useState<number | null>(null);
+
+  useEffect(() => {
+    const initialTimeoutId = setTimeout(() => {
+      setCurrentTime(Date.now());
+    }, 0);
+
+    const intervalId = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, ONE_MINUTE);
+
+    return () => {
+      clearTimeout(initialTimeoutId);
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const recentNotificationsCount =
+    currentTime === null
+      ? null
+      : notifications.filter(
+          (notification) =>
+            currentTime - notification.createdAt <= RECENT_NOTIFICATION_TIME,
+        ).length;
+
   return (
     <div className="flex items-center justify-end p-4 lg:px-8">
       <div className="flex items-center justify-end gap-6">
         <div className="relative">
           <BellRing className="h-6 w-6" />
-          <span className="absolute -top-2 -right-2 flex justify-center items-center h-[18px] w-[18px] text-[12px] rounded-full bg-dashboard-accent text-dashboard-surface">
-            1
-          </span>
+          {recentNotificationsCount !== null ? (
+            <span className="absolute -top-2 -right-2 flex justify-center items-center h-[18px] w-[18px] text-[12px] rounded-full bg-dashboard-accent text-dashboard-surface">
+              {recentNotificationsCount}
+            </span>
+          ) : null}
         </div>
         <div className="flex flex-col justify-center gap-5">
           <span className="font-semibold leading-0">Director</span>
